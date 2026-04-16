@@ -71,7 +71,7 @@ const travel = [
 ];
 ---
 
-<Layout title="Venue & Travel — Yetunde & Babatunde">
+<Layout title="Venue & Travel - Yetunde & Babatunde">
   <PageHero
     title="Venue & Travel"
     subtitle="Saturday, 10th October 2026 · Gravesend, Kent"
@@ -80,60 +80,65 @@ const travel = [
   />
 
   <!-- Venues -->
-  <section class="py-24 bg-warm-50">
-    <div class="max-w-5xl mx-auto px-6">
+  <section class="py-24 bg-warm-50 relative overflow-hidden">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image:
+        radial-gradient(circle at 85% 15%, rgba(187,147,209,0.18) 0%, transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(198,154,42,0.14) 0%, transparent 45%);"
+    ></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
       <div class="text-center mb-14 reveal">
         <span class="section-tag">Where We Celebrate</span>
-        <h2 class="font-serif text-4xl md:text-5xl text-dark-900">Our Venue</h2>
+        <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-2">Our Venue</h2>
+        <p class="font-display italic text-dark-800/70 text-lg md:text-xl">
+          One venue · Two ceremonies
+        </p>
         <div class="fancy-divider mt-4">
           <Icon name="diamond" class="w-4 h-4 text-gold-500" />
         </div>
       </div>
       <div class="max-w-2xl mx-auto reveal">
-        <div class="card p-10">
+        <div class="card bg-white p-10 md:p-12 border border-gold-400/25 hover:border-gold-400/50 transition-colors relative overflow-hidden rounded-4xl">
+          <!-- Top accent rule -->
+          <div class="absolute top-0 left-0 right-0 h-1 gradient-bg"></div>
           <div class="flex gap-3 mb-6">
-            <div
-              class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center shadow-gold"
-            >
+            <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center shadow-gold">
               <Icon name="ring" class="w-6 h-6 text-dark-900" />
             </div>
-            <div
-              class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center shadow-gold"
-            >
+            <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center shadow-gold">
               <Icon name="champagne" class="w-6 h-6 text-dark-900" />
             </div>
           </div>
-          <span class="section-tag">White &amp; Traditional Wedding</span>
-          <h3 class="font-serif text-2xl text-dark-900 font-semibold mb-1">
+          <p class="font-display italic text-gold-500 text-sm tracking-widest uppercase mb-2">
+            White &amp; Traditional Wedding
+          </p>
+          <h3 class="font-serif text-3xl text-dark-900 font-semibold mb-1">
             Elite Venue
           </h3>
-          <p class="font-sans text-dark-700/55 text-sm mb-5">
+          <p class="font-sans text-base text-dark-700/80 mb-5">
             Dunkirk Cl, Gravesend DA12 5ND, UK
           </p>
-          <div class="space-y-2 text-sm font-sans text-dark-700/55 mb-4">
-            <div class="flex items-center gap-2">
+          <div class="w-12 h-px bg-gold-400/40 mb-5"></div>
+          <div class="space-y-3 text-base font-sans text-dark-700/80 mb-5">
+            <div class="flex items-center gap-3">
               <Icon name="clock" class="w-4 h-4 text-gold-500 flex-shrink-0" />
-              <span>White Wedding — guests arrive 11:30 am</span>
+              <span>White Wedding: guests arrive 11:30 am</span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3">
               <Icon name="clock" class="w-4 h-4 text-gold-500 flex-shrink-0" />
-              <span>Traditional Wedding — guests arrive 2:30 pm</span>
+              <span>Traditional Wedding: guests arrive 2:30 pm</span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3">
               <Icon name="mappin" class="w-4 h-4 text-gold-500 flex-shrink-0" />
               <span>Gravesend, Kent, United Kingdom</span>
             </div>
-            <div class="flex items-center gap-2">
-              <Icon
-                name="calendar"
-                class="w-4 h-4 text-gold-500 flex-shrink-0"
-              />
+            <div class="flex items-center gap-3">
+              <Icon name="calendar" class="w-4 h-4 text-gold-500 flex-shrink-0" />
               <span>Saturday, 10th October 2026</span>
             </div>
           </div>
-          <p
-            class="font-sans text-xs text-dark-700/35 italic border-t border-warm-300 pt-4"
-          >
+          <p class="font-sans text-sm text-dark-700/60 italic border-t border-warm-300 pt-5">
             Both ceremonies take place at the same venue. Full directions and
             parking information will be shared with confirmed guests.
           </p>
@@ -147,9 +152,12 @@ const travel = [
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-14 reveal">
         <span class="section-tag">Where to Stay</span>
-        <h2 class="font-serif text-4xl md:text-5xl text-dark-900">
+        <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-2">
           Accommodation
         </h2>
+        <p class="font-display italic text-dark-800/70 text-lg md:text-xl">
+          A restful stay for our guests
+        </p>
         <div class="fancy-divider mt-4">
           <Icon name="diamond" class="w-4 h-4 text-gold-500" />
         </div>
@@ -158,24 +166,25 @@ const travel = [
         {
           hotels.map((group, gi) => (
             <div class="reveal" style={`transition-delay:${gi * 0.1}s`}>
-              <p class="label-small text-gold-500 mb-5">{group.tier}</p>
+              <p class="font-display italic text-gold-500 text-sm tracking-widest uppercase mb-2">{group.tier}</p>
+              <div class="w-12 h-px bg-gold-400/40 mb-5"></div>
               <div class="space-y-4">
                 {group.options.map((h) => (
-                  <div class="card p-5 flex items-center justify-between gap-4">
+                  <div class="card p-5 flex items-center justify-between gap-4 border border-gold-400/20 hover:border-gold-400/50 transition-colors rounded-4xl">
                     <div class="flex items-center gap-4">
-                      <div class="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
+                      <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
                         <Icon name={h.icon} class="w-4 h-4 text-dark-900" />
                       </div>
                       <div>
-                        <p class="font-serif text-dark-900 font-semibold">
+                        <p class="font-serif text-dark-900 font-semibold text-base">
                           {h.name}
                         </p>
-                        <p class="font-sans text-dark-700/50 text-xs">
+                        <p class="font-sans text-dark-700/70 text-sm">
                           {h.note}
                         </p>
                       </div>
                     </div>
-                    <span class="gradient-text font-sans font-medium text-sm whitespace-nowrap">
+                    <span class="gradient-text font-sans font-semibold text-sm whitespace-nowrap">
                       {h.range}
                     </span>
                   </div>
@@ -185,20 +194,29 @@ const travel = [
           ))
         }
       </div>
-      <p class="text-center font-sans text-dark-700/40 text-sm mt-10 reveal">
-        October in London is popular — we recommend booking accommodation early.
+      <p class="text-center font-sans italic text-dark-700/70 text-base mt-10 reveal max-w-xl mx-auto">
+        October in London is popular, so we recommend booking accommodation early.
       </p>
     </div>
   </section>
 
   <!-- Getting here -->
-  <section class="py-24 bg-warm-100">
-    <div class="max-w-4xl mx-auto px-6">
+  <section class="py-24 bg-warm-100 relative overflow-hidden">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image:
+        radial-gradient(circle at 15% 20%, rgba(187,147,209,0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(198,154,42,0.14) 0%, transparent 45%);"
+    ></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
       <div class="text-center mb-14 reveal">
         <span class="section-tag">How to Get Here</span>
-        <h2 class="font-serif text-4xl md:text-5xl text-dark-900">
+        <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-2">
           Getting There
         </h2>
+        <p class="font-display italic text-dark-800/70 text-lg md:text-xl">
+          Three ways to join us in Gravesend
+        </p>
         <div class="fancy-divider mt-4">
           <Icon name="diamond" class="w-4 h-4 text-gold-500" />
         </div>
@@ -207,7 +225,7 @@ const travel = [
         {
           travel.map((t, i) => (
             <div
-              class="card p-8 text-center reveal"
+              class="card p-8 text-center reveal border border-gold-400/20 hover:border-gold-400/50 transition-colors rounded-4xl"
               style={`transition-delay:${i * 0.1}s`}
             >
               <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-5 shadow-gold">
@@ -216,7 +234,8 @@ const travel = [
               <h4 class="font-serif text-xl text-dark-900 font-semibold mb-3">
                 {t.title}
               </h4>
-              <p class="font-sans text-dark-700/60 text-sm leading-relaxed">
+              <div class="w-10 h-px bg-gold-400/40 mx-auto mb-4"></div>
+              <p class="font-sans text-base text-dark-700/80 leading-relaxed">
                 {t.body}
               </p>
             </div>

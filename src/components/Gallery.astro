@@ -8,15 +8,23 @@ const photos = Array.from({ length: 3 }, (_, i) => ({
 }));
 ---
 
-<section id="gallery" class="py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
+<section id="gallery" class="py-24 bg-warm-50 relative overflow-hidden">
+  <!-- Soft background tints -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image:
+      radial-gradient(circle at 50% 0%, rgba(187,147,209,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(198,154,42,0.10) 0%, transparent 40%);"
+  ></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
 
     <div class="text-center mb-14 reveal">
       <span class="section-tag">A Glimpse of Us</span>
       <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-3">Captured in Love</h2>
       <div class="fancy-divider"><Icon name="diamond" class="w-4 h-4 text-gold-500" /></div>
-      <p class="font-sans text-dark-700/55 text-sm leading-relaxed max-w-md mx-auto mt-4">
-        Every photo tells a chapter. Here are a few of our favourite moments — with many more waiting for you in our full gallery.
+      <p class="font-sans text-base text-dark-700/80 leading-relaxed max-w-md mx-auto mt-4">
+        Every photo tells a chapter. Here are a few of our favourite moments, with many more waiting for you in our full gallery.
       </p>
     </div>
 
@@ -24,7 +32,7 @@ const photos = Array.from({ length: 3 }, (_, i) => ({
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 reveal">
         {photos.map((photo, i) => (
           <div
-            class="gallery-cell overflow-hidden rounded-2xl cursor-pointer group shadow-card hover:shadow-card-lg transition-shadow duration-500"
+            class="gallery-cell overflow-hidden rounded-2xl cursor-pointer group shadow-card hover:shadow-card-lg border border-gold-400/20 hover:border-gold-400/50 transition-all duration-500"
             data-src={photo.src}
             @click={`open(${i})`}
           >
@@ -77,7 +85,7 @@ const photos = Array.from({ length: 3 }, (_, i) => ({
 
 <style>
   .photo-placeholder {
-    background: linear-gradient(135deg, #2a1a10 0%, #3a2a18 50%, #6a0d18 100%);
+    background: linear-gradient(135deg, #1e0b3d 0%, #2a1054 50%, #3d1f70 100%);
   }
 </style>
 

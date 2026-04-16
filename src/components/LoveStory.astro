@@ -6,13 +6,13 @@ const milestones = [
     year: "Chapter One",
     icon: "sparkle",
     title: "First Meeting",
-    text: "Every great love story has a moment where two paths cross for the very first time — and ours was no different. A chance encounter that neither of us could have predicted became the start of everything.",
+    text: "Every great love story has a moment where two paths cross for the very first time, and ours was no different. A chance encounter that neither of us could have predicted became the start of everything.",
   },
   {
     year: "The Proposal",
     icon: "ring",
     title: "He Asked, She Said Yes",
-    text: "On a day filled with love, nerves, and joy, Babatunde got down on one knee and asked Yetunde to spend forever with him. She said yes — and the rest, as they say, is history.",
+    text: "On a day filled with love, nerves, and joy, Babatunde got down on one knee and asked Yetunde to spend forever with him. She said yes, and the rest, as they say, is history.",
   },
   {
     year: "10.10.2026",
@@ -23,8 +23,17 @@ const milestones = [
 ];
 ---
 
-<section id="our-story" class="pt-32 pb-24 bg-warm-100">
-  <div class="max-w-5xl mx-auto px-6">
+<section id="our-story" class="pt-32 pb-24 bg-warm-100 relative overflow-hidden">
+  <!-- Soft background tints -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image:
+      radial-gradient(circle at 10% 15%, rgba(187,147,209,0.18) 0%, transparent 45%),
+      radial-gradient(circle at 90% 85%, rgba(198,154,42,0.12) 0%, transparent 45%);"
+  >
+  </div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6">
     <div class="text-center mb-16 reveal">
       <span class="section-tag">How It All Began</span>
       <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-3">
@@ -76,17 +85,17 @@ const milestones = [
       <div class="flex-1 grid grid-cols-1 gap-5">
         {
           milestones.map((m, i) => (
-            <div class="card p-6 reveal" style={`transition-delay:${i * 0.1}s`}>
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center flex-shrink-0 shadow-gold">
-                  <Icon name={m.icon} class="w-4 h-4 text-dark-900" />
+            <div class="card p-7 border border-gold-400/20 hover:border-gold-400/50 transition-colors reveal" style={`transition-delay:${i * 0.1}s`}>
+              <div class="flex items-start gap-5">
+                <div class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center flex-shrink-0 shadow-gold">
+                  <Icon name={m.icon} class="w-5 h-5 text-dark-900" />
                 </div>
                 <div class="flex-1">
-                  <p class="label-small text-gold-500 mb-1">{m.year}</p>
-                  <h3 class="font-serif text-lg text-dark-900 font-semibold mb-2">
+                  <p class="label-small text-gold-500 mb-1.5">{m.year}</p>
+                  <h3 class="font-serif text-xl text-dark-900 font-semibold mb-2">
                     {m.title}
                   </h3>
-                  <p class="font-sans text-dark-800/65 leading-relaxed">
+                  <p class="font-sans text-base text-dark-800/80 leading-relaxed">
                     {m.text}
                   </p>
                 </div>
@@ -97,19 +106,20 @@ const milestones = [
       </div>
     </div>
 
-    <div class="mt-10 card p-10 text-center reveal">
+    <div class="mt-10 card p-10 md:p-12 text-center reveal border border-gold-400/25 shadow-[0_0_40px_rgba(187,147,209,0.15)]">
+      <Icon name="heart" class="w-6 h-6 text-gold-500 mx-auto mb-4" />
       <p
-        class="font-display italic text-2xl md:text-3xl text-dark-900/70 leading-relaxed mb-4"
+        class="font-display italic text-2xl md:text-3xl text-dark-900/85 leading-relaxed mb-4"
       >
         "Two families. One love. A future written together."
       </p>
-      <p class="label-small gradient-text">— Yetunde &amp; Babatunde</p>
+      <p class="label-small gradient-text">- Yetunde &amp; Babatunde</p>
     </div>
   </div>
 </section>
 
 <style>
   .couple-photo-placeholder {
-    background: linear-gradient(160deg, #2a1a10 0%, #3a2a18 45%, #6a0d18 100%);
+    background: linear-gradient(160deg, #1e0b3d 0%, #2a1054 45%, #3d1f70 100%);
   }
 </style>

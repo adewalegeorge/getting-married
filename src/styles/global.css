@@ -23,8 +23,8 @@
 :root {
   --gold:       #c69a2a;
   --rose-gold:  #b8882a;
-  --dark:       #1a0f0a;
-  --red:        #B3182A;
+  --dark:       #1e0b3d;
+  --lilac:      #bb93d1;
   --warm-bg:    #fdf9f3;
   --radius-card: 1.75rem;
 }
@@ -45,6 +45,14 @@
 .heading-script { @apply font-script leading-none; }
 .heading-serif  { @apply font-serif font-semibold leading-tight; }
 .label-small    { @apply font-sans text-sm tracking-[0.2em] uppercase font-medium; }
+
+/* Wedding-invitation style heading: wide letter-spaced serif */
+.heading-invite {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
 
 /* ─── Buttons ────────────────────────────────── */
 @layer components {

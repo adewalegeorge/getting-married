@@ -14,9 +14,9 @@ export default {
           700: '#8a6a18',
         },
         dark: {
-          900: '#1a0f0a',   /* warm near-black */
-          800: '#2a1a10',   /* deep warm brown */
-          700: '#3a2a18',   /* rich warm brown */
+          900: '#1e0b3d',   /* deep royal purple */
+          800: '#2a1054',   /* mid royal purple */
+          700: '#3d1f70',   /* lighter royal purple */
         },
         warm: {
           50:  '#fffdf9',
@@ -25,23 +25,17 @@ export default {
           300: '#f5ece0',
           400: '#ecddd0',
         },
-        red: {
-          400: '#d4485a',
-          500: '#B3182A',   /* primary accent red */
-          600: '#8a1220',
-          700: '#6a0d18',
-        },
       },
       fontFamily: {
-        script:  ['"Lora"',                'Georgia', 'serif'],
-        serif:   ['"Lora"',                'Georgia', 'serif'],
+        script:  ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        serif:   ['"Cormorant Garamond"', 'Georgia', 'serif'],
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans:    ['"Lora"',                'Georgia', 'serif'],
+        sans:    ['"Lora"',               'Georgia', 'serif'],
       },
       backgroundImage: {
         'gold-gradient':      'linear-gradient(135deg, #d4a574, #d4a59a)',
         'gold-gradient-soft': 'linear-gradient(135deg, #e8b888, #d4a59a)',
-        'dark-hero':          'linear-gradient(to bottom, rgba(15,10,5,0.55) 0%, rgba(15,10,5,0.3) 50%, rgba(15,10,5,0.7) 100%)',
+        'dark-hero':          'linear-gradient(to bottom, rgba(30,11,61,0.65) 0%, rgba(30,11,61,0.35) 50%, rgba(30,11,61,0.8) 100%)',
       },
       borderRadius: {
         '2xl': '1rem',
