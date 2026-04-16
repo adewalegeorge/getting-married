@@ -68,9 +68,10 @@ const navLinks = [
       ))}
       <a
         href="/#rsvp"
-        class="btn-primary text-xs px-6 py-2.5"
+        class="font-sans text-sm font-medium tracking-wide transition-colors"
+        :class="scrolled ? 'text-dark-800 hover:text-gold-500' : 'text-white/90 hover:text-white'"
       >
-        RSVP Now
+        RSVP
       </a>
     </div>
 
@@ -109,7 +110,7 @@ const navLinks = [
         </li>
       ))}
       <li class="pt-2">
-        <a href="/#rsvp" @click="open=false" class="btn-primary w-full text-xs py-3">RSVP Now</a>
+        <a href="/#rsvp" @click="open=false" class="btn-primary w-full text-xs py-3">RSVP</a>
       </li>
     </ul>
   </div>
@@ -216,7 +217,7 @@ const navLinks = [
   <div class="relative z-10 border-t border-gold-400/20 bg-black/20">
     <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/65 font-sans">
       <p>© {new Date().getFullYear()} Yetunde &amp; Babatunde</p>
-      <p class="flex items-center gap-1.5">Made with <span class="text-gold-300">♡</span> in Gravesend, Kent</p>
+      <p>Made by <a href="http://kinetechlab.uk" target="_blank" rel="noopener" class="text-gold-300 hover:text-gold-200 transition-colors">Kinetech Lab</a></p>
     </div>
   </div>
 </footer>
