@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 const {
-  title       = "Yetunde & Babatunde — 10.10.2026",
+  title       = "Yetunde & Babatunde - 10.10.2026",
   description = "Join us as we celebrate the union of Yetunde & Babatunde on 10th October 2026.",
 } = Astro.props;
 
@@ -40,9 +40,19 @@ const navLinks = [
   <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
 
     <!-- Logo -->
-    <a href="/" class="font-script text-xl leading-none transition-colors"
-       :class="scrolled ? 'text-dark-900' : 'text-white'">
-      Yetunde &amp; Babatunde
+    <a href="/" class="flex items-center gap-3 group" aria-label="Yetunde & Babatunde - Home">
+      <img
+        src="/images/yb-logo.svg"
+        alt=""
+        class="h-10 md:h-11 w-auto text-gold-500 transition-all duration-300 group-hover:scale-105"
+        :class="scrolled ? 'drop-shadow-none' : 'drop-shadow-[0_0_12px_rgba(198,154,42,0.35)]'"
+      />
+      <span
+        class="font-script text-xl leading-none transition-colors hidden sm:inline"
+        :class="scrolled ? 'text-dark-900' : 'text-white'"
+      >
+        Yetunde &amp; Babatunde
+      </span>
     </a>
 
     <!-- Desktop links -->
@@ -111,17 +121,35 @@ const navLinks = [
 </main>
 
 <!-- ░░ FOOTER ░░ -->
-<footer class="bg-dark-900 text-white">
-  <!-- Top gradient bar -->
+<footer class="relative overflow-hidden text-white"
+        style="background: linear-gradient(180deg, #2a1054 0%, #1e0b3d 55%, #14082e 100%);">
+  <!-- Top gold bar -->
   <div class="h-1 gradient-bg w-full"></div>
 
-  <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+  <!-- Decorative glow orbs -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background-image:
+         radial-gradient(circle at 12% 15%, rgba(187,147,209,0.28) 0%, transparent 45%),
+         radial-gradient(circle at 88% 85%, rgba(198,154,42,0.22) 0%, transparent 50%),
+         radial-gradient(circle at 50% 50%, rgba(61,31,112,0.4) 0%, transparent 70%);">
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
     <!-- Brand -->
-    <div class="sm:col-span-2 lg:col-span-1">
-      <p class="font-script text-5xl gradient-text mb-2">Yetunde &amp; Babatunde</p>
-      <p class="label-small text-white/30 mb-5">10 · 10 · 2026 · London</p>
-      <p class="font-sans text-sm text-white/45 leading-relaxed mb-6">
+    <div class="sm:col-span-2 lg:col-span-2">
+      <div class="flex items-start gap-5 mb-5">
+        <img
+          src="/images/yb-logo.svg"
+          alt="Yetunde & Babatunde"
+          class="h-36 w-auto flex-shrink-0 drop-shadow-[0_0_20px_rgba(198,154,42,0.55)]"
+        />
+        <div class="min-w-0">
+          <p class="font-script text-4xl md:text-5xl gradient-text mb-3 leading-tight">Yetunde &amp; Babatunde</p>
+          <p class="label-small text-gold-400/80">10 · 10 · 2026 · Gravesend, Kent</p>
+        </div>
+      </div>
+      <p class="font-sans text-base md:text-lg text-white/85 leading-relaxed mb-6 max-w-xl">
         Two hearts united in love, celebrated with family and friends across two continents.
       </p>
       <!-- Social -->
@@ -129,7 +157,8 @@ const navLinks = [
         {[
           { name:'Instagram', d:'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z' },
         ].map(s => (
-          <a href="#" aria-label={s.name} class="w-9 h-9 rounded-full border border-white/15 hover:border-gold-400/60 flex items-center justify-center text-white/30 hover:text-gold-400 transition-all">
+          <a href="#" aria-label={s.name}
+             class="w-10 h-10 rounded-full border border-gold-400/40 hover:border-gold-400 bg-white/5 hover:bg-gold-500/10 flex items-center justify-center text-gold-400 hover:text-gold-300 hover:scale-110 transition-all duration-300">
             <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d={s.d}/></svg>
           </a>
         ))}
@@ -142,16 +171,14 @@ const navLinks = [
       <ul class="space-y-3">
         {[
           ['/', 'Home'],
-          ['/#our-story', 'Our Story'],
-          ['/#events', 'Events'],
-          ['/#dress-code', 'Dress Code'],
+          ['/#events', 'Wedding Details'],
           ['/venue', 'Venue & Travel'],
-          ['/gallery', 'Gallery'],
+          ['/gallery', 'Photo Gallery'],
           ['/gifts', 'Gift Registry'],
           ['/#rsvp', 'RSVP'],
         ].map(([href, label]) => (
           <li>
-            <a href={href} class="font-sans text-sm text-white/45 hover:text-gold-400 transition-colors flex items-center gap-2 group">
+            <a href={href} class="font-sans text-sm text-white/80 hover:text-gold-300 transition-colors flex items-center gap-2 group">
               <span class="w-0 group-hover:w-3 h-px bg-gold-400 transition-all duration-300 overflow-hidden"></span>
               {label}
             </a>
@@ -168,52 +195,28 @@ const navLinks = [
           { icon: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z', label: 'Date',       value: 'Saturday\n10th October 2026' },
           { icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0zM12 10m-3 0a3 3 0 1 0 6 0 3 3 0 1 0-6 0',         label: 'Location',   value: 'Gravesend, Kent\nUnited Kingdom' },
           { icon: 'M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM22 7l-10 7L2 7',       label: 'RSVP By',    value: '29th July 2026' },
-          { icon: 'M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z', label: 'Dress Code', value: 'Formal — Gold & Lilac' },
+          { icon: 'M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z', label: 'Dress Code', value: 'Formal: Gold & Lilac' },
         ].map(item => (
           <div class="flex gap-3">
-            <svg class="w-4 h-4 text-gold-500/60 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg>
+            <div class="w-8 h-8 rounded-lg bg-gold-500/15 border border-gold-400/30 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg>
+            </div>
             <div>
-              <p class="label-small text-white/25 text-xs mb-0.5">{item.label}</p>
-              <p class="font-sans text-sm text-white/55 leading-snug whitespace-pre-line">{item.value}</p>
+              <p class="label-small text-gold-400/80 text-xs mb-0.5">{item.label}</p>
+              <p class="font-sans text-sm text-white/85 leading-snug whitespace-pre-line">{item.value}</p>
             </div>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- Contact + Newsletter -->
-    <div>
-      <p class="label-small text-gold-400 mb-5">Stay Updated</p>
-      <p class="font-sans text-sm text-white/45 leading-relaxed mb-5">
-        Get venue updates, schedule confirmations, and all the latest news from us.
-      </p>
-
-      <div x-data="footerSub()">
-        <p x-show="done" x-cloak class="font-sans text-sm text-gold-400 py-2">✓ You're subscribed!</p>
-        <form x-show="!done" @submit.prevent="sub()" class="space-y-2">
-          <input type="email" x-model="email" required
-            class="w-full bg-white/8 border border-white/12 focus:border-gold-400/50 rounded-xl px-4 py-2.5 text-white text-sm font-sans placeholder-white/25 focus:outline-none transition-colors"
-            placeholder="your@email.com"/>
-          <button type="submit" :disabled="loading" class="w-full btn-primary text-xs py-2.5 rounded-xl">
-            <span x-text="loading ? 'Subscribing…' : 'Subscribe'"></span>
-          </button>
-        </form>
-      </div>
-
-      <div class="mt-7 pt-6 border-t border-white/8">
-        <p class="label-small text-white/20 mb-2">Enquiries</p>
-        <a href="mailto:hello@example.com" class="font-sans text-sm text-gold-400/70 hover:text-gold-400 transition-colors">
-          hello@example.com
-        </a>
-      </div>
-    </div>
   </div>
 
   <!-- Bottom bar -->
-  <div class="border-t border-white/8">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/25 font-sans">
+  <div class="relative z-10 border-t border-gold-400/20 bg-black/20">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/65 font-sans">
       <p>© {new Date().getFullYear()} Yetunde &amp; Babatunde</p>
-      <p>Made with ♡ in London</p>
+      <p class="flex items-center gap-1.5">Made with <span class="text-gold-300">♡</span> in Gravesend, Kent</p>
     </div>
   </div>
 </footer>
@@ -266,23 +269,6 @@ const navLinks = [
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
-</script>
-
-<script is:inline>
-  function footerSub() {
-    return {
-      email:'', done:false, loading:false,
-      async sub() {
-        this.loading = true;
-        try {
-          const db = window.supabase.createClient(window.__SB_URL__, window.__SB_KEY__);
-          await db.from('newsletter_subscribers').insert({ email: this.email.toLowerCase().trim() });
-          this.done = true;
-        } catch(e) { /* silent */ }
-        finally { this.loading = false; }
-      }
-    };
-  }
 </script>
 
 </body>

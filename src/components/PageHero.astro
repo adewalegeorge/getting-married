@@ -39,10 +39,14 @@ const { title, subtitle, breadcrumb, image } = Astro.props;
       <span class="text-white">{breadcrumb}</span>
     </p>
 
-    <!-- Decorative element -->
-    <div class="flex items-center justify-center gap-4 mb-6">
+    <!-- Decorative crest -->
+    <div class="flex items-center justify-center gap-5 mb-6">
       <div class="h-px w-16 gradient-bg opacity-40"></div>
-      <span class="text-gold-500/60 text-lg">✦</span>
+      <img
+        src="/images/yb-logo.svg"
+        alt=""
+        class="h-20 md:h-24 w-auto drop-shadow-[0_0_14px_rgba(198,154,42,0.25)]"
+      />
       <div class="h-px w-16 gradient-bg opacity-40"></div>
     </div>
 
