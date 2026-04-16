@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wedding-abitos.pages.dev)",
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npx astro:*)",
+      "Bash(curl -s http://localhost:4321/)",
+      "Read(//Users/adewalegeorge/Sites/lab/getting-married/**)",
+      "Bash(npm run:*)",
+      "Bash(xargs sed:*)"
+    ]
+  }
+}

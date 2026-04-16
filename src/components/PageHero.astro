@@ -1,0 +1,95 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  breadcrumb: string;
+  image?: string;
+}
+const { title, subtitle, breadcrumb, image } = Astro.props;
+---
+
+<div class="bg-dark-900 pt-32 pb-20 relative overflow-hidden text-center">
+  <!-- Background image -->
+  {
+    image && (
+      <img
+        src={image}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        aria-hidden="true"
+      />
+    )
+  }
+  <!-- Dark overlay -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style={image
+      ? "background: rgba(15,10,5,0.2)"
+      : "background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(198,154,42,0.12) 0%, transparent 70%)"}
+  >
+  </div>
+  <!-- Top gradient bar -->
+  <div class="absolute top-0 left-0 right-0 h-1 gradient-bg"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6">
+    <!-- Breadcrumb -->
+    <p class="font-sans text-xs text-white/25 tracking-widest uppercase mb-8">
+      <a href="/" class="hover:text-gold-400 transition-colors">Home</a>
+      <span class="mx-3">›</span>
+      <span class="text-white">{breadcrumb}</span>
+    </p>
+
+    <!-- Decorative element -->
+    <div class="flex items-center justify-center gap-4 mb-6">
+      <div class="h-px w-16 gradient-bg opacity-40"></div>
+      <span class="text-gold-500/60 text-lg">✦</span>
+      <div class="h-px w-16 gradient-bg opacity-40"></div>
+    </div>
+
+    <h1
+      class="font-script leading-none mb-4 text-white page-hero-glow"
+      style="font-size:clamp(3.5rem,10vw,6rem)"
+    >
+      {title}
+    </h1>
+
+    {
+      subtitle && (
+        <p class="font-sans text-white/60 text-sm tracking-widest uppercase">
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+
+  <!-- Bottom gradient bar -->
+  <div class="absolute bottom-0 left-0 right-0 h-1 gradient-bg opacity-30">
+  </div>
+</div>
+
+<style>
+  .page-hero-glow {
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.35),
+      0 0 16px rgba(255, 255, 255, 0.2);
+    animation: pageHeroGlow 5s ease-in-out infinite;
+    will-change: text-shadow;
+  }
+
+  @keyframes pageHeroGlow {
+    0%, 100% {
+      text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.35),
+        0 0 16px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.45),
+        0 0 22px rgba(255, 255, 255, 0.28);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero-glow { animation: none; }
+  }
+</style>

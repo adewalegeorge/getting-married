@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import LoveStory from '../components/LoveStory.astro';
+import EventDetails from '../components/EventDetails.astro';
+import DressCode from '../components/DressCode.astro';
+import Gallery from '../components/Gallery.astro';
+import RSVPForm from '../components/RSVPForm.astro';
+import Icon from '../components/Icon.astro';
+
+const exploreCards = [
+  { href: '/venue',   icon: 'mappin', label: 'Venue & Travel',  desc: 'Ceremony and reception details, accommodation suggestions, and travel tips.' },
+  { href: '/gallery', icon: 'camera', label: 'Gallery',         desc: "Browse our journey together — from early memories to this beautiful new chapter." },
+  { href: '/gifts',   icon: 'gift',   label: 'Gift Registry',   desc: 'Your presence is the greatest gift. For those who have asked, a few ideas.' },
+];
+---
+
+<Layout>
+  <Hero />
+  <LoveStory />
+  <EventDetails />
+  <DressCode />
+
+  <!-- Explore section -->
+  <section class="py-24 bg-warm-100">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <span class="section-tag">Everything You Need</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-dark-900">Explore</h2>
+        <div class="fancy-divider mt-4">
+          <Icon name="diamond" class="w-4 h-4 text-gold-500" />
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {exploreCards.map((card, i) => (
+          <a href={card.href}
+            class="card p-8 group hover:scale-[1.02] transition-transform duration-300 reveal"
+            style={`transition-delay:${i*0.1}s`}>
+            <div class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center mb-5 shadow-gold group-hover:scale-110 transition-transform">
+              <Icon name={card.icon} class="w-5 h-5 text-dark-900" />
+            </div>
+            <h3 class="font-serif text-xl text-dark-900 font-semibold mb-2">{card.label}</h3>
+            <p class="font-sans text-sm text-dark-700/60 leading-relaxed mb-4">{card.desc}</p>
+            <span class="label-small text-gold-500 text-xs flex items-center gap-2 group-hover:gap-3 transition-all">
+              View more
+              <Icon name="arrowright" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Gallery />
+  <RSVPForm />
+</Layout>

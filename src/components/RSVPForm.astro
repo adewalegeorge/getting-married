@@ -1,0 +1,192 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="rsvp" class="py-24 bg-warm-50">
+  <div class="max-w-2xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-tag">Join Our Celebration</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-2">RSVP</h2>
+      <p class="font-sans text-dark-800/50 text-sm">Kindly reply by 29th July 2026</p>
+      <div class="fancy-divider mt-4">
+        <Icon name="heart" class="w-5 h-5 text-gold-500" />
+      </div>
+    </div>
+
+    <div x-data="rsvpForm()">
+
+      <!-- Success -->
+      <div x-show="submitted" x-cloak x-transition class="card p-12 text-center reveal">
+        <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6 shadow-gold-lg">
+          <Icon name="mail" class="w-7 h-7 text-dark-900" />
+        </div>
+        <h3 class="font-serif text-2xl text-dark-900 mb-3">Thank You!</h3>
+        <p class="font-sans text-dark-700/60 text-sm leading-relaxed">Your RSVP has been received. We can't wait to celebrate with you!</p>
+      </div>
+
+      <!-- Form -->
+      <form x-show="!submitted" @submit.prevent="submit()" novalidate class="card p-8 md:p-10 space-y-5">
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="label-small text-dark-700/50 text-xs mb-2 block">First Name *</label>
+            <input type="text" x-model="form.firstName" placeholder="Mary"
+              :class="errors.firstName ? 'border-red-400 shadow-[0_0_0_3px_rgba(239,68,68,0.15)]' : 'border-warm-300 focus:border-gold-400 focus:shadow-[0_0_0_3px_rgba(198,154,42,0.15)]'"
+              class="w-full border-2 rounded-xl px-4 py-3 text-dark-900 text-sm font-sans placeholder-dark-700/25 focus:outline-none transition-all bg-warm-50"/>
+            <p x-show="errors.firstName" class="text-red-500 text-xs mt-1" x-text="errors.firstName"></p>
+          </div>
+          <div>
+            <label class="label-small text-dark-700/50 text-xs mb-2 block">Last Name *</label>
+            <input type="text" x-model="form.lastName" placeholder="Osagie"
+              :class="errors.lastName ? 'border-red-400 shadow-[0_0_0_3px_rgba(239,68,68,0.15)]' : 'border-warm-300 focus:border-gold-400 focus:shadow-[0_0_0_3px_rgba(198,154,42,0.15)]'"
+              class="w-full border-2 rounded-xl px-4 py-3 text-dark-900 text-sm font-sans placeholder-dark-700/25 focus:outline-none transition-all bg-warm-50"/>
+            <p x-show="errors.lastName" class="text-red-500 text-xs mt-1" x-text="errors.lastName"></p>
+          </div>
+        </div>
+
+        <div>
+          <label class="label-small text-dark-700/50 text-xs mb-2 block">Email Address *</label>
+          <input type="email" x-model="form.email" placeholder="your@email.com"
+            :class="errors.email ? 'border-red-400 shadow-[0_0_0_3px_rgba(239,68,68,0.15)]' : 'border-warm-300 focus:border-gold-400 focus:shadow-[0_0_0_3px_rgba(198,154,42,0.15)]'"
+            class="w-full border-2 rounded-xl px-4 py-3 text-dark-900 text-sm font-sans placeholder-dark-700/25 focus:outline-none transition-all bg-warm-50"/>
+          <p x-show="errors.email" class="text-red-500 text-xs mt-1" x-text="errors.email"></p>
+        </div>
+
+        <div>
+          <label class="label-small text-dark-700/50 text-xs mb-2 block">Phone Number</label>
+          <input type="tel" x-model="form.phone" placeholder="+44 7700 900000"
+            class="w-full border-2 border-warm-300 focus:border-gold-400 focus:shadow-[0_0_0_3px_rgba(198,154,42,0.15)] rounded-xl px-4 py-3 text-dark-900 text-sm font-sans placeholder-dark-700/25 focus:outline-none transition-all bg-warm-50"/>
+        </div>
+
+        <!-- Will you attend? -->
+        <div>
+          <label class="label-small text-dark-700/50 text-xs mb-3 block">Will you be attending? *</label>
+          <div class="grid grid-cols-2 gap-3">
+            {[{val:'yes',label:"Yes, I'll be there"},{val:'no',label:"Unfortunately, I can't make it"}].map(opt => (
+              <label class="cursor-pointer">
+                <input type="radio" x-model="form.attending" value={opt.val} class="sr-only"/>
+                <div class="border-2 rounded-xl py-3.5 px-4 flex items-center gap-3 text-sm font-sans font-medium transition-all duration-200"
+                  :class={`form.attending === '${opt.val}' ? 'border-gold-400 bg-gold-500/8 text-dark-900 shadow-[0_0_0_3px_rgba(198,154,42,0.15)]' : 'border-warm-300 text-dark-700/60 hover:border-gold-300'`}>
+                  <div class="w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all"
+                    :class={`form.attending === '${opt.val}' ? 'border-gold-500' : 'border-warm-400'`}>
+                    <div class="w-2.5 h-2.5 rounded-full bg-gold-500 transition-all"
+                      :class={`form.attending === '${opt.val}' ? 'scale-100' : 'scale-0'`}></div>
+                  </div>
+                  {opt.label}
+                </div>
+              </label>
+            ))}
+          </div>
+          <p x-show="errors.attending" class="text-red-500 text-xs mt-1" x-text="errors.attending"></p>
+        </div>
+
+        <!-- Relationship -->
+        <div>
+          <label class="label-small text-dark-700/50 text-xs mb-2 block">Your Relationship to the Couple *</label>
+          <select x-model="form.relationship"
+            :class="errors.relationship ? 'border-red-400' : 'border-warm-300 focus:border-gold-400'"
+            class="w-full border-2 rounded-xl px-4 py-3 text-dark-900 text-sm font-sans focus:outline-none transition-all bg-warm-50">
+            <option value="" disabled selected>Select your relationship</option>
+            <option value="bride_family">Bride's Family</option>
+            <option value="groom_family">Groom's Family</option>
+            <option value="bride_friend">Bride's Friend</option>
+            <option value="groom_friend">Groom's Friend</option>
+            <option value="colleague">Colleague</option>
+            <option value="other">Other</option>
+          </select>
+          <p x-show="errors.relationship" class="text-red-500 text-xs mt-1" x-text="errors.relationship"></p>
+        </div>
+
+        <!-- Dietary -->
+        <div x-show="form.attending === 'yes'" x-transition>
+          <label class="label-small text-dark-700/50 text-xs mb-2 block">Dietary Requirements or Allergies</label>
+          <textarea x-model="form.dietary" rows="2" placeholder="Vegetarian, nut allergy, etc."
+            class="w-full border-2 border-warm-300 focus:border-gold-400 rounded-xl px-4 py-3 text-dark-900 text-sm font-sans placeholder-dark-700/30 focus:outline-none transition-all bg-warm-50 resize-none"></textarea>
+        </div>
+
+        <!-- Message -->
+        <div>
+          <label class="label-small text-dark-700/50 text-xs mb-2 block">A Message to the Couple</label>
+          <textarea x-model="form.message" rows="3" placeholder="Share your well wishes…"
+            class="w-full border-2 border-warm-300 focus:border-gold-400 rounded-xl px-4 py-3 text-dark-900 text-sm font-sans placeholder-dark-700/30 focus:outline-none transition-all bg-warm-50 resize-none"></textarea>
+        </div>
+
+        <p x-show="submitError" class="text-red-500 text-sm text-center font-sans" x-text="submitError"></p>
+
+        <button type="submit" :disabled="loading"
+          class="w-full inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wider uppercase text-white py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+          style="background: #c69a2a;">
+          <svg x-show="loading" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+          </svg>
+          <span x-text="loading ? 'Sending…' : 'Confirm Attendance'"></span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- RSVP Contacts -->
+    <div class="mt-10 reveal">
+      <p class="font-sans text-dark-700/50 text-sm text-center leading-relaxed mb-6">
+        For further assistance or any questions regarding your RSVP, please don't hesitate to reach out to any of our contacts below.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4">
+        {[
+          { name: 'Adewale George',   phone: '07848 883057' },
+          { name: 'Adeola George',    phone: '07456 352678' },
+          { name: 'Emmanuel George',  phone: '07843 552645' },
+        ].map(c => (
+          <a href={`tel:${c.phone.replace(/\s/g,'')}`}
+            class="card p-5 text-center group hover:scale-[1.02] transition-transform duration-300">
+            <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center mx-auto mb-3 shadow-gold">
+              <svg class="w-4 h-4 text-dark-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.86 5.86l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <p class="font-serif text-dark-900 font-semibold text-sm mb-1">{c.name}</p>
+            <p class="font-sans text-gold-500 text-sm group-hover:text-gold-600 transition-colors">{c.phone}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+  function rsvpForm() {
+    return {
+      submitted: false, loading: false, submitError: '',
+      form: { firstName:'', lastName:'', email:'', phone:'', attending:'', relationship:'', dietary:'', message:'' },
+      errors: {},
+      validate() {
+        this.errors = {};
+        if (!this.form.firstName.trim()) this.errors.firstName = 'First name is required.';
+        if (!this.form.lastName.trim())  this.errors.lastName  = 'Last name is required.';
+        if (!this.form.email.trim() || !/\S+@\S+\.\S+/.test(this.form.email)) this.errors.email = 'A valid email is required.';
+        if (!this.form.attending) this.errors.attending = 'Please select an option.';
+        if (!this.form.relationship) this.errors.relationship = 'Please select your relationship.';
+        return Object.keys(this.errors).length === 0;
+      },
+      async submit() {
+        if (!this.validate()) return;
+        this.loading = true; this.submitError = '';
+        try {
+          const db = window.supabase.createClient(window.__SB_URL__, window.__SB_KEY__);
+          const { error } = await db.from('rsvps').insert({
+            first_name: this.form.firstName, last_name: this.form.lastName,
+            email: this.form.email.toLowerCase().trim(), phone: this.form.phone || null,
+            attending: this.form.attending,
+            relationship: this.form.relationship,
+            dietary: this.form.dietary || null, message: this.form.message || null,
+          });
+          if (error) throw new Error(error.message);
+          this.submitted = true;
+        } catch(e) { this.submitError = e.message || 'Something went wrong. Please try again.'; }
+        finally { this.loading = false; }
+      },
+    };
+  }
+</script>
