@@ -26,7 +26,7 @@ import Icon from "./Icon.astro";
         The Celebration
       </h2>
       <p class="font-sans text-gold-400/90 text-sm tracking-widest">
-        Saturday, 10th October 2026 · Gravesend, Kent
+        Friday, 9th October 2026 · Gravesend, Kent
       </p>
       <div class="fancy-divider mt-6">
         <Icon name="diamond" class="w-4 h-4 text-gold-400" />
@@ -85,12 +85,26 @@ import Icon from "./Icon.astro";
         <!-- Venue body -->
         <div class="p-10">
           <p class="label-small text-gold-500 mb-2">The Venue</p>
-          <h3 class="font-serif text-3xl text-dark-900 font-semibold mb-2">
+          <h3 class="font-serif text-3xl text-dark-900 font-semibold mb-3">
             Elite Venue
           </h3>
-          <p class="font-sans text-base text-dark-700/80 mb-3">
-            Dunkirk Cl, Gravesend DA12 5ND, United Kingdom
-          </p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Elite+Venue+Dunkirk+Cl+Gravesend+DA12+5ND"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-start gap-3 bg-warm-50 border border-gold-400/30 hover:border-gold-500 hover:bg-gold-500/5 rounded-xl px-4 py-3 mb-5 group transition-all"
+          >
+            <Icon name="mappin" class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+            <span class="flex-1">
+              <span class="block font-sans text-base text-dark-900">
+                Dunkirk Cl, Gravesend DA12 5ND, United Kingdom
+              </span>
+              <span class="block font-sans text-xs text-gold-600 font-medium tracking-wider uppercase mt-1 flex items-center gap-1 group-hover:gap-2 transition-all">
+                View on Google Maps
+                <Icon name="arrowright" class="w-3 h-3" />
+              </span>
+            </span>
+          </a>
           <p class="font-sans text-base text-dark-700/80 leading-relaxed mb-8">
             Both our white and traditional wedding ceremonies will take place at
             the same venue: vows, prayers, a feast, live music, and dancing the
@@ -149,7 +163,7 @@ import Icon from "./Icon.astro";
                 name="calendar"
                 class="w-4 h-4 text-gold-500 flex-shrink-0"
               />
-              <span>Saturday, 10th October 2026</span>
+              <span>Friday, 9th October 2026</span>
             </div>
             <div class="flex items-center gap-2">
               <Icon name="users" class="w-4 h-4 text-gold-500 flex-shrink-0" />
@@ -174,10 +188,10 @@ import Icon from "./Icon.astro";
           class="font-script gradient-text leading-none mb-2 drop-shadow-[0_0_32px_rgba(198,154,42,0.35)]"
           style="font-size: clamp(3.5rem, 10vw, 6rem);"
         >
-          10 · 10 · 2026
+          09 · 10 · 2026
         </p>
         <p class="font-sans text-white/75 text-sm tracking-widest mb-8">
-          Saturday
+          Friday
         </p>
 
         <!-- Venue + address -->
@@ -256,7 +270,7 @@ import Icon from "./Icon.astro";
           </a>
           <!-- Add to Calendar -->
           <a
-            href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261010T113000%0ADTEND:20261010T230000%0ASUMMARY:Wedding%20of%20Yetunde%20%26%20Babatunde%0ADESCRIPTION:White%20Wedding%2011%3A30am%20%7C%20Traditional%20Wedding%202%3A30pm%0ALOCATION:Elite%20Venue%2C%20Dunkirk%20Cl%2C%20Gravesend%20DA12%205ND%2C%20UK%0AEND:VEVENT%0AEND:VCALENDAR"
+            href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261009T113000%0ADTEND:20261009T230000%0ASUMMARY:Wedding%20of%20Yetunde%20%26%20Babatunde%0ADESCRIPTION:White%20Wedding%2011%3A30am%20%7C%20Traditional%20Wedding%202%3A30pm%0ALOCATION:Elite%20Venue%2C%20Dunkirk%20Cl%2C%20Gravesend%20DA12%205ND%2C%20UK%0AEND:VEVENT%0AEND:VCALENDAR"
             download="yetunde-babatunde-wedding.ics"
             class="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wider uppercase text-white px-10 py-4 rounded-full border-2 border-gold-400/40 hover:border-gold-400 hover:bg-white/10 transition-all duration-300"
           >
