@@ -24,9 +24,9 @@ import Icon from './Icon.astro';
       </div>
     </div>
 
-    <div x-data="rsvpForm()">
+    <div x-data="rsvpForm()" x-init="init()">
 
-      <!-- Success -->
+      <!-- Success (just submitted in this session) -->
       <div x-show="submitted" x-cloak x-transition class="card bg-white p-12 text-center reveal border border-gold-400/30 rounded-4xl shadow-[0_0_40px_rgba(198,154,42,0.15)]">
         <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6 shadow-gold-lg">
           <Icon name="heart" class="w-7 h-7 text-dark-900" />
@@ -39,8 +39,30 @@ import Icon from './Icon.astro';
         </p>
       </div>
 
+      <!-- Previously submitted (cookie detected) -->
+      <div x-show="previouslySubmitted && !submitted && !allowAnother" x-cloak x-transition
+           class="card bg-white p-12 text-center reveal border border-gold-400/30 rounded-4xl shadow-[0_0_40px_rgba(187,147,209,0.15)]">
+        <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6 shadow-gold-lg">
+          <Icon name="heart" class="w-7 h-7 text-dark-900" />
+        </div>
+        <h3 class="font-serif text-3xl md:text-4xl text-dark-900 mb-2">You've Already RSVP'd</h3>
+        <p class="font-display italic text-dark-800/70 text-lg mb-4" x-text="previousEmail ? 'Confirmed for ' + previousEmail : 'Thank you for confirming'"></p>
+        <div class="w-12 h-px bg-gold-400/60 mx-auto mb-5"></div>
+        <p class="font-sans text-base text-dark-700/85 leading-relaxed max-w-md mx-auto mb-8">
+          Thank you for letting us know. If you need to update your response, please reach out to us directly.
+        </p>
+        <button
+          type="button"
+          @click="allowAnother = true"
+          class="inline-flex items-center justify-center gap-2 font-sans text-sm font-medium tracking-wider uppercase px-6 py-3 rounded-full border border-gold-400/50 text-gold-600 hover:bg-gold-500/10 hover:border-gold-500 transition-all"
+        >
+          RSVP for someone else
+          <Icon name="arrowright" class="w-3.5 h-3.5" />
+        </button>
+      </div>
+
       <!-- Form -->
-      <form x-show="!submitted" @submit.prevent="submit()" novalidate class="card bg-white p-8 md:p-10 space-y-5 border border-gold-400/25 rounded-4xl">
+      <form x-show="!submitted && (!previouslySubmitted || allowAnother)" x-cloak @submit.prevent="submit()" novalidate class="card bg-white p-8 md:p-10 space-y-5 border border-gold-400/25 rounded-4xl">
 
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
@@ -172,9 +194,37 @@ import Icon from './Icon.astro';
 <script is:inline>
   function rsvpForm() {
     return {
-      submitted: false, loading: false, submitError: '',
+      submitted: false,
+      previouslySubmitted: false,
+      previousEmail: '',
+      allowAnother: false,
+      loading: false,
+      submitError: '',
       form: { firstName:'', lastName:'', email:'', phone:'', attending:'', relationship:'', dietary:'', message:'' },
       errors: {},
+      init() {
+        // Escape hatch: ?rsvp=new in the URL bypasses the cookie check
+        // so a guest can submit a fresh RSVP even after a prior submission.
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('rsvp') === 'new') {
+          this.allowAnother = true;
+          return;
+        }
+        const flag = this.getCookie('rsvp_submitted');
+        if (flag) {
+          this.previouslySubmitted = true;
+          this.previousEmail = flag;
+        }
+      },
+      setCookie(name, value, days = 365) {
+        const exp = new Date(Date.now() + days * 86400000).toUTCString();
+        document.cookie = name + '=' + encodeURIComponent(value) +
+          '; expires=' + exp + '; path=/; SameSite=Lax';
+      },
+      getCookie(name) {
+        const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return match ? decodeURIComponent(match[1]) : null;
+      },
       validate() {
         this.errors = {};
         if (!this.form.firstName.trim()) this.errors.firstName = 'First name is required.';
@@ -183,6 +233,22 @@ import Icon from './Icon.astro';
         if (!this.form.attending) this.errors.attending = 'Please select an option.';
         if (!this.form.relationship) this.errors.relationship = 'Please select your relationship.';
         return Object.keys(this.errors).length === 0;
+      },
+      friendlyError(error) {
+        // Postgres unique-violation (duplicate email)
+        if (error.code === '23505' || /duplicate key|unique constraint/i.test(error.message || '')) {
+          return "It looks like you've already RSVP'd with this email. If you'd like to update your response, please reach out to us directly.";
+        }
+        // Postgres check-constraint violation
+        if (error.code === '23514') {
+          return 'One of the fields has an invalid value. Please review and try again.';
+        }
+        // Network / offline
+        if (/fetch|network|failed to fetch/i.test(error.message || '')) {
+          return "We couldn't reach our server. Please check your connection and try again.";
+        }
+        // Generic fallback
+        return 'Something went wrong submitting your RSVP. Please try again, or contact us directly.';
       },
       async submit() {
         if (!this.validate()) return;
@@ -196,9 +262,16 @@ import Icon from './Icon.astro';
             relationship: this.form.relationship,
             dietary: this.form.dietary || null, message: this.form.message || null,
           });
-          if (error) throw new Error(error.message);
+          if (error) {
+            this.submitError = this.friendlyError(error);
+            return;
+          }
+          // Remember this submission for a year so they don't see the form again
+          this.setCookie('rsvp_submitted', this.form.email.toLowerCase().trim());
           this.submitted = true;
-        } catch(e) { this.submitError = e.message || 'Something went wrong. Please try again.'; }
+        } catch(e) {
+          this.submitError = this.friendlyError(e);
+        }
         finally { this.loading = false; }
       },
     };
