@@ -12,7 +12,7 @@ import Icon from "../components/Icon.astro";
     image="/images/registry.jpg"
   />
 
-  <!-- Intro -->
+  <!-- Gratitude + gift cards -->
   <section class="py-20 bg-warm-50 relative overflow-hidden">
     <div
       class="absolute inset-0 pointer-events-none"
@@ -21,33 +21,32 @@ import Icon from "../components/Icon.astro";
         radial-gradient(circle at 15% 80%, rgba(198,154,42,0.14) 0%, transparent 45%);"
     >
     </div>
-    <div class="relative z-10 max-w-2xl mx-auto px-6 text-center reveal">
-      <span class="section-tag">A Note From Us</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-3">
-        With Gratitude
-      </h2>
-      <div class="fancy-divider mb-6">
-        <Icon name="heart" class="w-5 h-5 text-gold-500" />
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <!-- Intro -->
+      <div class="max-w-2xl mx-auto text-center reveal mb-14">
+        <span class="section-tag">A Note From Us</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-3">
+          With Gratitude
+        </h2>
+        <div class="fancy-divider mb-6">
+          <Icon name="heart" class="w-5 h-5 text-gold-500" />
+        </div>
+        <p
+          class="font-display italic text-2xl md:text-3xl text-dark-900/85 leading-relaxed mb-5"
+        >
+          "Your presence at our wedding is truly the greatest gift of all."
+        </p>
+        <p
+          class="font-sans text-base text-dark-700/80 leading-relaxed max-w-xl mx-auto"
+        >
+          For those who have kindly asked, we have put together a small
+          selection of ideas. Any contribution, big or small, is deeply
+          appreciated as we begin our life together.
+        </p>
       </div>
-      <p
-        class="font-display italic text-2xl md:text-3xl text-dark-900/85 leading-relaxed mb-5"
-      >
-        "Your presence at our wedding is truly the greatest gift of all."
-      </p>
-      <p
-        class="font-sans text-base text-dark-700/80 leading-relaxed max-w-xl mx-auto"
-      >
-        For those who have kindly asked, we have put together a small selection
-        of ideas. Any contribution, big or small, is deeply appreciated as we
-        begin our life together.
-      </p>
-    </div>
-  </section>
 
-  <!-- Gift cards -->
-  <section class="pb-24 bg-warm-50 relative">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-6 items-stretch">
+      <!-- Gift cards -->
+      <div class="grid md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
         <!-- Honeymoon -->
         <div
           class="card bg-white p-8 md:p-9 text-center flex flex-col reveal border border-gold-400/30 hover:border-gold-400/60 transition-colors rounded-4xl relative overflow-hidden"
@@ -65,7 +64,7 @@ import Icon from "../components/Icon.astro";
             Honeymoon Fund
           </p>
           <h3
-            class="font-serif text-2xl md:text-3xl text-dark-900 font-semibold mb-3"
+            class="font-serif text-xl md:text-2xl text-dark-900 mb-3"
           >
             Adventures Together
           </h3>
@@ -84,14 +83,8 @@ import Icon from "../components/Icon.astro";
           class="card bg-white p-8 md:p-9 text-center flex flex-col relative overflow-hidden rounded-4xl reveal border-2 border-gold-500 hover:border-gold-600 transition-colors shadow-[0_20px_60px_-15px_rgba(198,154,42,0.4)] md:-translate-y-2"
         >
           <div class="absolute top-0 left-0 right-0 h-1.5 gradient-bg"></div>
-          <div class="absolute top-4 right-4">
-            <span
-              class="bg-gold-500 text-dark-900 font-sans text-[0.7rem] font-bold tracking-widest uppercase px-3 py-1 rounded-full shadow-gold"
-              >★ Preferred</span
-            >
-          </div>
           <div
-            class="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-5 shadow-gold mt-6"
+            class="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-5 shadow-gold"
           >
             <Icon name="banknote" class="w-7 h-7 text-dark-900" />
           </div>
@@ -101,7 +94,7 @@ import Icon from "../components/Icon.astro";
             Monetary Gift
           </p>
           <h3
-            class="font-serif text-2xl md:text-3xl text-dark-900 font-semibold mb-3"
+            class="font-serif text-xl md:text-2xl text-dark-900 mb-3"
           >
             Bank Transfer
           </h3>
@@ -135,53 +128,6 @@ import Icon from "../components/Icon.astro";
           </p>
         </div>
 
-        <!-- Registry — lilac accent variation -->
-        <div
-          class="card bg-white p-8 md:p-9 text-center flex flex-col reveal transition-colors rounded-4xl relative overflow-hidden"
-          style="border: 1px solid rgba(187,147,209,0.4);"
-        >
-          <div
-            class="absolute top-0 left-0 right-0 h-1"
-            style="background: linear-gradient(90deg, #c69a2a, #bb93d1);"
-          >
-          </div>
-          <div
-            class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg"
-            style="background: linear-gradient(135deg, #bb93d1, #9a6fb0);"
-          >
-            <Icon name="home" class="w-7 h-7 text-white" />
-          </div>
-          <p
-            class="font-display italic text-base tracking-wider mb-1"
-            style="color:#9a6fb0;"
-          >
-            Home Registry
-          </p>
-          <h3
-            class="font-serif text-2xl md:text-3xl text-dark-900 font-semibold mb-3"
-          >
-            Our New Home
-          </h3>
-          <div class="w-12 h-px mx-auto mb-5" style="background-color:#bb93d1;">
-          </div>
-          <p
-            class="font-sans text-base text-dark-800/80 leading-relaxed flex-1 mb-6"
-          >
-            We are setting up our first home together. Practical gifts for the
-            kitchen and living spaces are always welcome.
-          </p>
-          <a
-            href="https://www.johnlewis.com/gift-list"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wider uppercase px-8 py-3.5 rounded-full border-2 transition-all duration-300 hover:text-white"
-            style="border-color:#bb93d1; color:#9a6fb0;"
-            onmouseover="this.style.backgroundColor='#bb93d1'"
-            onmouseout="this.style.backgroundColor='transparent'"
-          >
-            John Lewis
-          </a>
-        </div>
       </div>
     </div>
   </section>
