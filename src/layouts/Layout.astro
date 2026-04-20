@@ -237,11 +237,16 @@ const navLinks = [
 </button>
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script define:vars={{ supabaseUrl, supabaseKey }}>
   window.__SB_URL__ = supabaseUrl;
   window.__SB_KEY__ = supabaseKey;
+</script>
+<!-- Bundle Supabase locally via Astro instead of CDN (more reliable) -->
+<script>
+  import { createClient } from '@supabase/supabase-js';
+  // Expose with the same API the inline scripts expect: window.supabase.createClient(...)
+  (window as any).supabase = { createClient };
 </script>
 
 <!-- Scroll reveal + smooth anchor scroll -->

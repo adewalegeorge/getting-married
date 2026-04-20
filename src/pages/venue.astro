@@ -5,48 +5,62 @@ import Icon from "../components/Icon.astro";
 
 const hotels = [
   {
-    tier: "Near the Venue (Gravesend & Kent)",
+    tier: "Near the Venue",
+    subtitle: "Walking or short drive from Elite Venue",
     options: [
       {
-        name: "Premier Inn Gravesend",
+        name: "Premier Inn Gravesend Central",
         range: "From £70 / night",
-        note: "Walking distance from town centre",
+        distance: "~2 mi · 7 min drive",
+        note: "Reliable chain with free parking",
         icon: "building",
+        url: "https://www.booking.com/searchresults.html?ss=Premier+Inn+Gravesend+Central",
       },
       {
-        name: "Cyclopark Hotel",
-        range: "From £85 / night",
-        note: "Gravesend, convenient location",
+        name: "Premier Inn Dartford Crayford",
+        range: "From £75 / night",
+        distance: "~7 mi · 15 min drive",
+        note: "Direct drive via the A2, on-site parking",
         icon: "building",
+        url: "https://www.booking.com/searchresults.html?ss=Premier+Inn+Dartford+Crayford",
       },
       {
-        name: "Travelodge Gravesend",
-        range: "From £55 / night",
-        note: "Budget-friendly in Gravesend",
-        icon: "building",
+        name: "Holiday Inn Rochester - Chatham",
+        range: "From £90 / night",
+        distance: "~15 mi · 25 min drive",
+        note: "4-star in historic Rochester, short drive along the M2",
+        icon: "star",
+        url: "https://www.booking.com/searchresults.html?ss=Holiday+Inn+Rochester+Chatham",
       },
     ],
   },
   {
     tier: "Staying in London",
+    subtitle: "~35–45 min by train from Gravesend",
     options: [
       {
         name: "Premier Inn London Bridge",
-        range: "From £100 / night",
-        note: "~30 min train to Gravesend",
-        icon: "building",
-      },
-      {
-        name: "Holiday Inn Canary Wharf",
         range: "From £120 / night",
-        note: "Easy connections to Gravesend",
+        distance: "35 min by train",
+        note: "Direct trains to Gravesend from London Bridge",
         icon: "building",
+        url: "https://www.booking.com/searchresults.html?ss=Premier+Inn+London+Bridge",
       },
       {
-        name: "The Shard Area Hotels",
-        range: "From £150 / night",
-        note: "London Bridge station nearby",
+        name: "Hilton London Bridge",
+        range: "From £180 / night",
+        distance: "35 min by train",
+        note: "4-star right by London Bridge station",
         icon: "star",
+        url: "https://www.booking.com/searchresults.html?ss=Hilton+London+Bridge",
+      },
+      {
+        name: "citizenM Tower of London",
+        range: "From £150 / night",
+        distance: "40 min by train",
+        note: "Modern design hotel near the Thames",
+        icon: "sparkle",
+        url: "https://www.booking.com/searchresults.html?ss=citizenM+Tower+of+London",
       },
     ],
   },
@@ -116,9 +130,23 @@ const travel = [
           <h3 class="font-serif text-3xl text-dark-900 font-semibold mb-1">
             Elite Venue
           </h3>
-          <p class="font-sans text-base text-dark-700/80 mb-5">
-            Dunkirk Cl, Gravesend DA12 5ND, UK
-          </p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Elite+Venue+Dunkirk+Cl+Gravesend+DA12+5ND"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-start gap-3 bg-warm-50 border border-gold-400/30 hover:border-gold-500 hover:bg-gold-500/5 rounded-xl px-4 py-3 mb-5 group transition-all"
+          >
+            <Icon name="mappin" class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+            <span class="flex-1">
+              <span class="block font-sans text-base text-dark-900">
+                Dunkirk Cl, Gravesend DA12 5ND, UK
+              </span>
+              <span class="block font-sans text-xs text-gold-600 font-medium tracking-wider uppercase mt-1 flex items-center gap-1 group-hover:gap-2 transition-all">
+                View on Google Maps
+                <Icon name="arrowright" class="w-3 h-3" />
+              </span>
+            </span>
+          </a>
           <div class="w-12 h-px bg-gold-400/40 mb-5"></div>
           <div class="space-y-3 text-base font-sans text-dark-700/80 mb-5">
             <div class="flex items-center gap-3">
@@ -166,37 +194,75 @@ const travel = [
         {
           hotels.map((group, gi) => (
             <div class="reveal" style={`transition-delay:${gi * 0.1}s`}>
-              <p class="font-display italic text-gold-500 text-sm tracking-widest uppercase mb-2">{group.tier}</p>
+              <p class="font-display italic text-gold-500 text-sm tracking-widest uppercase mb-1">{group.tier}</p>
+              <p class="font-sans text-dark-700/70 text-sm mb-3">{group.subtitle}</p>
               <div class="w-12 h-px bg-gold-400/40 mb-5"></div>
               <div class="space-y-4">
                 {group.options.map((h) => (
-                  <div class="card p-5 flex items-center justify-between gap-4 border border-gold-400/20 hover:border-gold-400/50 transition-colors rounded-4xl">
-                    <div class="flex items-center gap-4">
-                      <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
+                  <a href={h.url} target="_blank" rel="noopener"
+                     class="card bg-white p-5 block group border border-gold-400/20 hover:border-gold-400/50 hover:shadow-card-lg transition-all rounded-4xl">
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0 mt-0.5">
                         <Icon name={h.icon} class="w-4 h-4 text-dark-900" />
                       </div>
-                      <div>
-                        <p class="font-serif text-dark-900 font-semibold text-base">
-                          {h.name}
-                        </p>
-                        <p class="font-sans text-dark-700/70 text-sm">
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-3 mb-1">
+                          <p class="font-serif text-dark-900 font-semibold text-base leading-tight">
+                            {h.name}
+                          </p>
+                          <span class="gradient-text font-sans font-semibold text-sm whitespace-nowrap">
+                            {h.range}
+                          </span>
+                        </div>
+                        <p class="font-sans text-dark-700/80 text-sm mb-2.5">
                           {h.note}
                         </p>
+                        <div class="flex items-center gap-2 text-xs">
+                          <span class="inline-flex items-center gap-1.5 text-gold-600 font-medium">
+                            <Icon name="mappin" class="w-3 h-3" />
+                            {h.distance}
+                          </span>
+                          <span class="ml-auto flex items-center gap-1 text-gold-500 opacity-60 group-hover:opacity-100 group-hover:gap-2 transition-all font-medium tracking-wider uppercase text-[0.7rem]">
+                            Book
+                            <Icon name="arrowright" class="w-3 h-3" />
+                          </span>
+                        </div>
                       </div>
                     </div>
-                    <span class="gradient-text font-sans font-semibold text-sm whitespace-nowrap">
-                      {h.range}
-                    </span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
           ))
         }
       </div>
-      <p class="text-center font-sans italic text-dark-700/70 text-base mt-10 reveal max-w-xl mx-auto">
-        October in London is popular, so we recommend booking accommodation early.
-      </p>
+
+      <!-- Browse-all CTAs + footer note -->
+      <div class="mt-12 text-center reveal max-w-2xl mx-auto">
+        <p class="font-display italic text-dark-800/70 text-lg mb-5">
+          Prefer to browse yourself?
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <a href="https://www.booking.com/searchresults.html?ss=Gravesend%2C+Kent"
+             target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 font-sans text-sm font-medium tracking-wider uppercase px-6 py-3 rounded-full border border-gold-400/50 text-gold-600 hover:bg-gold-500/10 hover:border-gold-500 transition-all">
+            Hotels on Booking.com
+            <Icon name="arrowright" class="w-3.5 h-3.5" />
+          </a>
+          <a href="https://www.airbnb.co.uk/s/Gravesend--Kent--United-Kingdom/homes"
+             target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 font-sans text-sm font-medium tracking-wider uppercase px-6 py-3 rounded-full border transition-all"
+             style="border-color: rgba(187,147,209,0.5); color: #9a6fb0;"
+             onmouseover="this.style.backgroundColor='rgba(187,147,209,0.12)';this.style.borderColor='#bb93d1'"
+             onmouseout="this.style.backgroundColor='transparent';this.style.borderColor='rgba(187,147,209,0.5)'">
+            Airbnb in Kent
+            <Icon name="arrowright" class="w-3.5 h-3.5" />
+          </a>
+        </div>
+        <p class="font-sans italic text-dark-700/70 text-base leading-relaxed">
+          October weekends in Kent fill up quickly, so we recommend booking early.
+        </p>
+      </div>
     </div>
   </section>
 
