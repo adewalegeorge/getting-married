@@ -1,125 +1,273 @@
 ---
 import Icon from "./Icon.astro";
 
-const milestones = [
+const chapters = [
   {
-    year: "Chapter One",
-    icon: "sparkle",
+    numeral: "I",
+    label: "Chapter One",
     title: "First Meeting",
     text: "Every great love story has a moment where two paths cross for the very first time, and ours was no different. A chance encounter that neither of us could have predicted became the start of everything.",
+    icon: "sparkle",
+    motif: "A first glance",
+    photo: "/images/gallery-5.jpg",
   },
   {
-    year: "The Proposal",
-    icon: "ring",
+    numeral: "II",
+    label: "The Proposal",
     title: "He Asked, She Said Yes",
     text: "On a day filled with love, nerves, and joy, Babatunde got down on one knee and asked Yetunde to spend forever with him. She said yes, and the rest, as they say, is history.",
+    icon: "ring",
+    motif: "She said yes",
+    photo: "/images/gallery-1.jpg",
   },
   {
-    year: "09.10.2026",
-    icon: "church",
+    numeral: "III",
+    label: "09 · 10 · 2026",
     title: "Forever Begins",
     text: "Now we invite our closest family and friends to celebrate with us as we begin this new chapter together. Thank you for being part of our story.",
+    icon: "church",
+    motif: "Forever",
+    photo: null,
   },
 ];
 ---
 
-<section id="our-story" class="pt-32 pb-24 bg-warm-100 relative overflow-hidden">
+<section id="our-story" class="pt-28 pb-28 bg-warm-100 relative overflow-hidden">
   <!-- Soft background tints -->
   <div
     class="absolute inset-0 pointer-events-none"
     style="background-image:
-      radial-gradient(circle at 10% 15%, rgba(187,147,209,0.18) 0%, transparent 45%),
-      radial-gradient(circle at 90% 85%, rgba(198,154,42,0.12) 0%, transparent 45%);"
-  >
-  </div>
+      radial-gradient(circle at 8% 10%, rgba(187,147,209,0.20) 0%, transparent 45%),
+      radial-gradient(circle at 92% 90%, rgba(198,154,42,0.14) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(253,249,243,0.4) 0%, transparent 60%);"
+  ></div>
 
   <div class="relative z-10 max-w-5xl mx-auto px-6">
-    <div class="text-center mb-16 reveal">
-      <span class="section-tag">How It All Began</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dark-900 mb-3">
+    <!-- Editorial header -->
+    <div class="text-center mb-20 reveal">
+      <span class="section-tag">A Love Letter</span>
+      <h2
+        class="font-script text-dark-900 leading-[0.95] mb-3"
+        style="font-size: clamp(3.25rem, 8vw, 5.5rem);"
+      >
         Our Love Story
       </h2>
-      <div class="fancy-divider">
+      <p class="font-display italic text-dark-800/70 text-xl md:text-2xl mb-6">
+        A tale in three chapters
+      </p>
+      <div class="flex items-center justify-center gap-4">
+        <div class="h-px w-16 sm:w-24 bg-gold-400/40"></div>
         <Icon name="heart" class="w-5 h-5 text-gold-500" />
+        <div class="h-px w-16 sm:w-24 bg-gold-400/40"></div>
       </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-10 items-start mb-10">
-      <!-- Couple photo — left -->
-      <div class="relative w-full lg:w-2/5 flex-shrink-0 reveal">
-        <div
-          class="absolute -inset-3 rounded-3xl border border-gold-400/30 pointer-events-none"
-        >
-        </div>
-        <div
-          class="absolute -inset-1.5 rounded-3xl border border-gold-400/20 pointer-events-none"
-        >
-        </div>
-        <div
-          class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card-lg couple-photo-placeholder"
-        >
-          <img
-            src="/images/our-love-story.jpeg"
-            alt="Yetunde & Babatunde"
-            class="absolute inset-0 w-full h-full object-cover object-center opacity-0 transition-opacity duration-700"
-            onload="this.style.opacity='1';this.nextElementSibling.style.display='none'"
-            onerror="this.style.display='none'"
-          />
-          <div
-            class="absolute inset-0 flex flex-col items-center justify-center gap-3"
-          >
-            <Icon name="heart" class="w-10 h-10 text-white/20" />
-            <p class="font-script text-3xl text-white/25">
-              Yetunde &amp; Babatunde
-            </p>
-          </div>
-        </div>
-        <p
-          class="text-center font-sans text-xs text-dark-700/35 tracking-widest uppercase mt-4"
-        >
-          Our Story
-        </p>
-      </div>
+    <!-- Chapters with timeline spine -->
+    <div class="relative">
+      <!-- Vertical timeline (desktop only) -->
+      <div
+        class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 pointer-events-none"
+        style="background: linear-gradient(180deg, transparent 0%, rgba(198,154,42,0.35) 8%, rgba(198,154,42,0.35) 92%, transparent 100%);"
+        aria-hidden="true"
+      ></div>
 
-      <!-- Milestone stories — right -->
-      <div class="flex-1 grid grid-cols-1 gap-5">
+      <div class="space-y-24 md:space-y-28">
         {
-          milestones.map((m, i) => (
-            <div class="card p-7 border border-gold-400/20 hover:border-gold-400/50 transition-colors reveal" style={`transition-delay:${i * 0.1}s`}>
-              <div class="flex items-start gap-5">
-                <div class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center flex-shrink-0 shadow-gold">
-                  <Icon name={m.icon} class="w-5 h-5 text-dark-900" />
+          chapters.map((c, i) => {
+            const isCenter = i === 2;
+            const isReversed = i === 1;
+            return (
+              <article
+                class="relative reveal"
+                style={`transition-delay:${i * 0.15}s`}
+              >
+                {/* Roman numeral watermark */}
+                <span
+                  class:list={[
+                    "absolute font-display text-gold-500/[0.08] leading-none select-none pointer-events-none -z-0",
+                    isCenter
+                      ? "left-1/2 -translate-x-1/2 -top-10"
+                      : isReversed
+                        ? "right-0 md:right-4 -top-6"
+                        : "left-0 md:left-4 -top-6",
+                  ]}
+                  style="font-size: clamp(8rem, 18vw, 13rem);"
+                  aria-hidden="true"
+                >
+                  {c.numeral}
+                </span>
+
+                {/* Spine badge (desktop only) */}
+                <div
+                  class="hidden md:flex absolute left-1/2 top-8 -translate-x-1/2 w-12 h-12 rounded-full bg-warm-100 border-2 border-gold-400/50 items-center justify-center shadow-[0_0_20px_rgba(198,154,42,0.25)] z-20"
+                  aria-hidden="true"
+                >
+                  <div class="w-9 h-9 rounded-full gradient-bg flex items-center justify-center shadow-gold">
+                    <Icon name={c.icon} class="w-4 h-4 text-dark-900" />
+                  </div>
                 </div>
-                <div class="flex-1">
-                  <p class="label-small text-gold-500 mb-1.5">{m.year}</p>
-                  <h3 class="font-serif text-xl text-dark-900 font-semibold mb-2">
-                    {m.title}
-                  </h3>
-                  <p class="font-sans text-base text-dark-800/80 leading-relaxed">
-                    {m.text}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))
+
+                {/* Chapter content */}
+                {isCenter ? (
+                  /* Centered ceremonial layout */
+                  <div class="relative z-10 text-center max-w-2xl mx-auto pt-16 md:pt-20">
+                    <p
+                      class="font-script gradient-text leading-none mb-3"
+                      style="font-size: clamp(2.5rem, 6vw, 4rem);"
+                    >
+                      {c.label}
+                    </p>
+                    <p class="font-display italic text-gold-500 text-sm tracking-[0.3em] uppercase mb-3">
+                      Final Chapter
+                    </p>
+                    <h3 class="font-serif text-2xl md:text-3xl text-dark-900 font-semibold mb-4">
+                      {c.title}
+                    </h3>
+                    <div class="w-12 h-px bg-gold-400/50 mx-auto mb-5" />
+                    <p class="font-sans text-base md:text-lg text-dark-800/80 leading-relaxed">
+                      {c.text}
+                    </p>
+                    <div class="flex items-center justify-center gap-3 mt-7">
+                      <div class="h-px w-10 bg-gold-400/40" />
+                      <Icon name="diamond" class="w-3 h-3 text-gold-500" />
+                      <div class="h-px w-10 bg-gold-400/40" />
+                    </div>
+                  </div>
+                ) : (
+                  /* Two-column editorial spread */
+                  <div
+                    class:list={[
+                      "relative z-10 grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-12 md:pt-0",
+                      isReversed ? "md:[direction:rtl]" : "",
+                    ]}
+                  >
+                    {/* Visual side */}
+                    <div class:list={["md:[direction:ltr]", isReversed ? "md:pl-8" : "md:pr-8"]}>
+                      {c.photo ? (
+                        /* Polaroid frame */
+                        <div
+                          class:list={[
+                            "relative bg-white p-3 pb-12 rounded-2xl border border-gold-400/30 shadow-[0_20px_50px_-15px_rgba(30,11,61,0.3)] transition-transform duration-500 hover:scale-[1.02]",
+                            isReversed ? "rotate-2 hover:rotate-1" : "-rotate-2 hover:-rotate-1",
+                          ]}
+                        >
+                          <div class="aspect-[3/4] rounded-xl overflow-hidden">
+                            <img
+                              src={c.photo}
+                              alt={c.title}
+                              class="block w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                          <p class="absolute bottom-4 left-0 right-0 text-center font-display italic text-gold-600 text-sm tracking-wider">
+                            {c.motif}
+                          </p>
+                        </div>
+                      ) : (
+                        /* Gradient story tile */
+                        <div
+                          class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(30,11,61,0.3)] flex flex-col items-center justify-center text-center px-6"
+                          style="background: linear-gradient(160deg, #1e0b3d 0%, #2a1054 45%, #3d1f70 100%);"
+                        >
+                          <div
+                            class="absolute inset-0 pointer-events-none opacity-90"
+                            style="background-image:
+                              radial-gradient(circle at 30% 25%, rgba(198,154,42,0.25) 0%, transparent 55%),
+                              radial-gradient(circle at 70% 80%, rgba(187,147,209,0.30) 0%, transparent 55%);"
+                          />
+                          {/* Corner flourishes */}
+                          <span class="absolute top-4 left-4 text-gold-300/50 text-lg font-display select-none">❦</span>
+                          <span class="absolute top-4 right-4 text-gold-300/50 text-lg font-display select-none">❦</span>
+                          <span class="absolute bottom-4 left-4 text-gold-300/50 text-lg font-display select-none">❦</span>
+                          <span class="absolute bottom-4 right-4 text-gold-300/50 text-lg font-display select-none">❦</span>
+
+                          <div class="relative z-10">
+                            <div class="w-16 h-16 rounded-full bg-white/8 border border-gold-400/40 flex items-center justify-center mx-auto mb-5 shadow-gold backdrop-blur-sm">
+                              <Icon name={c.icon} class="w-7 h-7 text-gold-300" />
+                            </div>
+                            <p
+                              class="font-script gradient-text leading-tight"
+                              style="font-size: clamp(1.75rem, 4vw, 2.5rem);"
+                            >
+                              {c.motif}
+                            </p>
+                            <div class="w-12 h-px bg-gold-400/50 mx-auto mt-4 mb-3" />
+                            <p class="font-sans text-white/60 text-xs tracking-[0.3em] uppercase">
+                              Chapter {c.numeral}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Story side */}
+                    <div
+                      class:list={[
+                        "md:[direction:ltr]",
+                        isReversed ? "text-center md:text-right md:pr-8" : "text-center md:text-left md:pl-8",
+                      ]}
+                    >
+                      <p class="font-display italic text-gold-500 text-sm tracking-[0.3em] uppercase mb-2">
+                        {c.label}
+                      </p>
+                      <h3 class="font-serif text-2xl md:text-3xl text-dark-900 font-semibold mb-3 leading-tight">
+                        {c.title}
+                      </h3>
+                      <div
+                        class:list={[
+                          "w-12 h-px bg-gold-400/50 mb-5",
+                          isReversed ? "mx-auto md:ml-auto md:mr-0" : "mx-auto md:mx-0",
+                        ]}
+                      />
+                      <p class="font-sans text-base md:text-lg text-dark-800/80 leading-relaxed">
+                        {c.text}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })
         }
       </div>
     </div>
 
-    <div class="mt-10 card p-10 md:p-12 text-center reveal border border-gold-400/25 shadow-[0_0_40px_rgba(187,147,209,0.15)]">
-      <Icon name="heart" class="w-6 h-6 text-gold-500 mx-auto mb-4" />
-      <p
-        class="font-display italic text-2xl md:text-3xl text-dark-900/85 leading-relaxed mb-4"
-      >
-        "Two families. One love. A future written together."
-      </p>
-      <p class="label-small gradient-text">- Yetunde &amp; Babatunde</p>
+    <!-- Closing love letter -->
+    <div class="mt-24 reveal">
+      <div class="relative bg-white rounded-4xl p-10 md:p-14 text-center border border-gold-400/30 shadow-[0_25px_60px_-25px_rgba(30,11,61,0.25)] overflow-hidden">
+        <!-- Top accent bar -->
+        <div class="absolute top-0 left-0 right-0 h-1 gradient-bg"></div>
+        <!-- Corner flourishes -->
+        <span class="absolute top-5 left-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
+        <span class="absolute top-5 right-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
+        <span class="absolute bottom-5 left-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
+        <span class="absolute bottom-5 right-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
+        <!-- Soft tints -->
+        <div
+          class="absolute inset-0 pointer-events-none"
+          style="background-image:
+            radial-gradient(circle at 20% 30%, rgba(187,147,209,0.10) 0%, transparent 55%),
+            radial-gradient(circle at 80% 70%, rgba(198,154,42,0.10) 0%, transparent 55%);"
+        ></div>
+
+        <div class="relative z-10">
+          <Icon name="heart" class="w-7 h-7 text-gold-500 mx-auto mb-5" />
+          <p class="font-display italic text-dark-900 text-2xl md:text-3xl leading-relaxed mb-6 max-w-xl mx-auto">
+            "Two families. One love. A future written together."
+          </p>
+          <div class="flex items-center justify-center gap-4 mb-3">
+            <div class="h-px w-10 bg-gold-400/50"></div>
+            <Icon name="diamond" class="w-3 h-3 text-gold-500" />
+            <div class="h-px w-10 bg-gold-400/50"></div>
+          </div>
+          <p
+            class="font-script gradient-text leading-none"
+            style="font-size: clamp(2rem, 4.5vw, 2.75rem);"
+          >
+            Yetunde &amp; Babatunde
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  .couple-photo-placeholder {
-    background: linear-gradient(160deg, #1e0b3d 0%, #2a1054 45%, #3d1f70 100%);
-  }
-</style>

@@ -2,14 +2,22 @@
 interface Props {
   title?: string;
   description?: string;
+  standalone?: boolean;
+  noindex?: boolean;
 }
 const {
   title       = "Yetunde & Babatunde - 09.10.2026",
   description = "Join us as we celebrate the union of Yetunde & Babatunde on 9th October 2026.",
+  standalone  = false,
+  noindex     = false,
 } = Astro.props;
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL  ?? '';
 const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ?? '';
+
+const siteUrl = Astro.site ?? new URL('https://yb-wedding.pages.dev');
+const ogImage = new URL('/images/the-georges-hero.jpeg', siteUrl).href;
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
 
 const navLinks = [
   { href: '/gallery', label: 'Gallery' },
@@ -26,9 +34,29 @@ const navLinks = [
   <meta name="description" content={description}/>
   <title>{title}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  {!noindex && <link rel="canonical" href={canonical}/>}
+  {noindex && <meta name="robots" content="noindex,nofollow"/>}
+
+  <!-- Open Graph / Facebook / WhatsApp / iMessage -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:image" content={ogImage}/>
+  <meta property="og:image:alt" content="Yetunde & Babatunde"/>
+  <meta property="og:url" content={canonical}/>
+  <meta property="og:site_name" content="Yetunde & Babatunde"/>
+  <meta property="og:locale" content="en_GB"/>
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content={title}/>
+  <meta name="twitter:description" content={description}/>
+  <meta name="twitter:image" content={ogImage}/>
+  <meta name="twitter:image:alt" content="Yetunde & Babatunde"/>
 </head>
 <body>
 
+{!standalone && (
 <!-- ░░ NAVBAR ░░ -->
 <nav
   id="navbar"
@@ -115,6 +143,7 @@ const navLinks = [
     </ul>
   </div>
 </nav>
+)}
 
 <!-- ░░ CONTENT ░░ -->
 <main id="top">
@@ -135,26 +164,26 @@ const navLinks = [
          radial-gradient(circle at 50% 50%, rgba(61,31,112,0.4) 0%, transparent 70%);">
   </div>
 
-  <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+  <div class={`relative z-10 max-w-6xl mx-auto px-6 py-16 ${standalone ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12'}`}>
 
     <!-- Brand -->
-    <div class="sm:col-span-2 lg:col-span-2">
-      <div class="flex items-start gap-5 mb-5">
+    <div class={standalone ? 'max-w-2xl text-center' : 'sm:col-span-2 lg:col-span-2'}>
+      <div class={`flex items-start gap-5 mb-5 ${standalone ? 'justify-center' : ''}`}>
         <img
           src="/images/yb-logo.svg"
           alt="Yetunde & Babatunde"
           class="h-36 w-auto flex-shrink-0 drop-shadow-[0_0_20px_rgba(198,154,42,0.55)]"
         />
         <div class="min-w-0">
-          <p class="font-script text-4xl md:text-5xl gradient-text mb-3 leading-tight">Yetunde &amp; Babatunde</p>
+          <p class="font-script text-[30px] md:text-5xl gradient-text mb-3 leading-tight">Yetunde &amp; Babatunde</p>
           <p class="label-small text-gold-400/80">09 · 10 · 2026 · Gravesend, Kent</p>
         </div>
       </div>
-      <p class="font-sans text-base md:text-lg text-white/85 leading-relaxed mb-6 max-w-xl">
+      <p class={`font-sans text-base md:text-lg text-white/85 leading-relaxed mb-6 ${standalone ? 'mx-auto' : ''} max-w-xl`}>
         Two hearts united in love, celebrated with family and friends across two continents.
       </p>
       <!-- Social -->
-      <div class="flex gap-3">
+      <div class={`flex gap-3 ${standalone ? 'justify-center' : ''}`}>
         {[
           { name:'Instagram', d:'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z' },
         ].map(s => (
@@ -166,6 +195,8 @@ const navLinks = [
       </div>
     </div>
 
+    {!standalone && (
+    <>
     <!-- Quick Links -->
     <div>
       <p class="label-small text-gold-400 mb-5">Navigation</p>
@@ -196,7 +227,6 @@ const navLinks = [
           { icon: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z', label: 'Date',       value: 'Friday\n9th October 2026' },
           { icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0zM12 10m-3 0a3 3 0 1 0 6 0 3 3 0 1 0-6 0',         label: 'Location',   value: 'Gravesend, Kent\nUnited Kingdom' },
           { icon: 'M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM22 7l-10 7L2 7',       label: 'RSVP By',    value: '29th July 2026' },
-          { icon: 'M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z', label: 'Dress Code', value: 'Formal: Gold & Lilac' },
         ].map(item => (
           <div class="flex gap-3">
             <div class="w-8 h-8 rounded-lg bg-gold-500/15 border border-gold-400/30 flex items-center justify-center flex-shrink-0">
@@ -210,6 +240,8 @@ const navLinks = [
         ))}
       </div>
     </div>
+    </>
+    )}
 
   </div>
 
@@ -222,6 +254,7 @@ const navLinks = [
   </div>
 </footer>
 
+{!standalone && (
 <!-- Back to top -->
 <button
   x-data="{ show: false }"
@@ -235,6 +268,7 @@ const navLinks = [
     <path d="M5 15l7-7 7 7"/>
   </svg>
 </button>
+)}
 
 <!-- Scripts -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

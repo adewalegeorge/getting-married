@@ -34,12 +34,12 @@ import Icon from "./Icon.astro";
       <p
         class="font-sans text-white/85 text-base leading-relaxed max-w-xl mx-auto mt-6"
       >
-        Join us for our white and traditional wedding ceremonies, both held at
-        the same beautiful venue, surrounded by the people we love most.
+        Join us for our wedding celebration in Gravesend, Kent, surrounded by
+        the people we love most.
       </p>
     </div>
 
-    <!-- Single venue card with two ceremonies -->
+    <!-- Venue card -->
     <div class="mb-14">
       <div
         class="rounded-4xl bg-white border border-gold-400/40 hover:border-gold-400/70 overflow-hidden transition-all duration-400 reveal shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]"
@@ -58,22 +58,15 @@ import Icon from "./Icon.astro";
           <div
             class="absolute inset-0 flex flex-col items-center justify-center gap-3"
           >
-            <div class="flex gap-4">
-              <div
-                class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center shadow-gold"
-              >
-                <Icon name="church" class="w-5 h-5 text-white" />
-              </div>
-              <div
-                class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center shadow-gold"
-              >
-                <Icon name="champagne" class="w-5 h-5 text-white" />
-              </div>
+            <div
+              class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center shadow-gold"
+            >
+              <Icon name="ring" class="w-5 h-5 text-white" />
             </div>
             <p
               class="font-sans text-xs text-white/70 tracking-widest uppercase"
             >
-              One Venue · Two Ceremonies
+              Our Wedding Celebration
             </p>
           </div>
           <div
@@ -106,33 +99,13 @@ import Icon from "./Icon.astro";
             </span>
           </a>
           <p class="font-sans text-base text-dark-700/80 leading-relaxed mb-8">
-            Both our white and traditional wedding ceremonies will take place at
-            the same venue: vows, prayers, a feast, live music, and dancing the
-            day and night away with family and friends.
+            Join us at Elite Venue for vows, a feast, live music, and dancing
+            the day and night away with family and friends.
           </p>
 
-          <!-- Day timeline: two ceremonies -->
-          <p class="label-small text-gold-500 mb-4">Order of the Day</p>
-          <div class="space-y-4 mb-6">
-            <div
-              class="flex gap-5 items-center bg-warm-50 border border-gold-400/25 rounded-2xl p-5 hover:border-gold-400/50 transition-colors"
-            >
-              <div
-                class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0"
-              >
-                <Icon name="church" class="w-5 h-5 text-dark-900" />
-              </div>
-              <div class="flex-1">
-                <p
-                  class="font-serif text-dark-900 text-lg font-semibold mb-0.5"
-                >
-                  White Wedding
-                </p>
-                <p class="font-sans text-dark-700/80 text-sm">
-                  Guests arrive 11:30 am
-                </p>
-              </div>
-            </div>
+          <!-- Arrival -->
+          <p class="label-small text-gold-500 mb-4">Arrival</p>
+          <div class="mb-6">
             <div
               class="flex gap-5 items-center bg-warm-50 border border-gold-400/25 rounded-2xl p-5 hover:border-gold-400/50 transition-colors"
             >
@@ -145,7 +118,7 @@ import Icon from "./Icon.astro";
                 <p
                   class="font-serif text-dark-900 text-lg font-semibold mb-0.5"
                 >
-                  Traditional Wedding · Ceremony &amp; Reception
+                  Wedding Celebration
                 </p>
                 <p class="font-sans text-dark-700/80 text-sm">
                   Guests arrive 2:30 pm
@@ -213,36 +186,21 @@ import Icon from "./Icon.astro";
           </div>
         </div>
 
-        <!-- Two ceremony times -->
-        <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-          {
-            [
-              {
-                icon: "church",
-                label: "White Wedding",
-                value: "Guests arrive 11:30 am",
-              },
-              {
-                icon: "ring",
-                label: "Traditional Wedding",
-                value: "Guests arrive 2:30 pm",
-              },
-            ].map((d) => (
-              <div class="flex items-center gap-4 bg-white/10 border border-gold-400/25 rounded-2xl px-5 py-4 text-left hover:border-gold-400/50 transition-colors">
-                <div class="w-11 h-11 rounded-2xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
-                  <Icon name={d.icon} class="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p class="font-sans text-gold-300 text-xs uppercase tracking-wider leading-none mb-1.5">
-                    {d.label}
-                  </p>
-                  <p class="font-sans text-white text-sm font-medium">
-                    {d.value}
-                  </p>
-                </div>
-              </div>
-            ))
-          }
+        <!-- Arrival time -->
+        <div class="flex justify-center mb-6">
+          <div class="flex items-center gap-4 bg-white/10 border border-gold-400/25 rounded-2xl px-6 py-4 text-left hover:border-gold-400/50 transition-colors">
+            <div class="w-11 h-11 rounded-2xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
+              <Icon name="ring" class="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p class="font-sans text-gold-300 text-xs uppercase tracking-wider leading-none mb-1.5">
+                Wedding Celebration
+              </p>
+              <p class="font-sans text-white text-sm font-medium">
+                Guests arrive 2:30 pm
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- RSVP By note -->
@@ -270,7 +228,7 @@ import Icon from "./Icon.astro";
           </a>
           <!-- Add to Calendar -->
           <a
-            href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261009T113000%0ADTEND:20261009T230000%0ASUMMARY:Wedding%20of%20Yetunde%20%26%20Babatunde%0ADESCRIPTION:White%20Wedding%2011%3A30am%20%7C%20Traditional%20Wedding%202%3A30pm%0ALOCATION:Elite%20Venue%2C%20Dunkirk%20Cl%2C%20Gravesend%20DA12%205ND%2C%20UK%0AEND:VEVENT%0AEND:VCALENDAR"
+            href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261009T143000%0ADTEND:20261009T230000%0ASUMMARY:Wedding%20of%20Yetunde%20%26%20Babatunde%0ADESCRIPTION:Wedding%20celebration%2C%20guests%20arrive%202%3A30pm%0ALOCATION:Elite%20Venue%2C%20Dunkirk%20Cl%2C%20Gravesend%20DA12%205ND%2C%20UK%0AEND:VEVENT%0AEND:VCALENDAR"
             download="yetunde-babatunde-wedding.ics"
             class="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wider uppercase text-white px-10 py-4 rounded-full border-2 border-gold-400/40 hover:border-gold-400 hover:bg-white/10 transition-all duration-300"
           >
