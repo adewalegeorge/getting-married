@@ -3,10 +3,17 @@ import Icon from './Icon.astro';
 ---
 
 <section id="rsvp" class="py-24 bg-warm-50 relative overflow-hidden">
-  <!-- Soft background tints -->
+  <!-- Stationery atmosphere -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-multiply"
+    style="background-image: url('/images/rsvp-stationery.jpg'); background-size: cover; background-position: center;"
+    aria-hidden="true"
+  ></div>
+  <!-- Soft background tints (sit above the photo to warm and diffuse it) -->
   <div
     class="absolute inset-0 pointer-events-none"
     style="background-image:
+      radial-gradient(circle at 50% 50%, rgba(253,249,243,0.55) 0%, rgba(253,249,243,0.15) 60%, transparent 80%),
       radial-gradient(circle at 90% 15%, rgba(187,147,209,0.20) 0%, transparent 45%),
       radial-gradient(circle at 10% 85%, rgba(198,154,42,0.14) 0%, transparent 45%);"
   ></div>
@@ -63,6 +70,12 @@ import Icon from './Icon.astro';
 
       <!-- Form -->
       <form x-show="!submitted && (!previouslySubmitted || allowAnother)" x-cloak @submit.prevent="submit()" novalidate class="card bg-white p-8 md:p-10 space-y-5 border border-gold-400/25 rounded-4xl">
+
+        <!-- Honeypot: bots fill this; humans never see it. Do not remove. -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;" tabindex="-1">
+          <label>Website</label>
+          <input type="text" name="website" x-model="form.website" tabindex="-1" autocomplete="off"/>
+        </div>
 
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
@@ -200,7 +213,7 @@ import Icon from './Icon.astro';
       allowAnother: false,
       loading: false,
       submitError: '',
-      form: { firstName:'', lastName:'', email:'', phone:'', attending:'', relationship:'', dietary:'', message:'' },
+      form: { firstName:'', lastName:'', email:'', phone:'', attending:'', relationship:'', dietary:'', message:'', website:'' },
       errors: {},
       init() {
         // Escape hatch: ?rsvp=new in the URL bypasses the cookie check
@@ -251,6 +264,8 @@ import Icon from './Icon.astro';
         return 'Something went wrong submitting your RSVP. Please try again, or contact us directly.';
       },
       async submit() {
+        // Honeypot: only bots fill this. Pretend success silently.
+        if (this.form.website) { this.submitted = true; return; }
         if (!this.validate()) return;
         this.loading = true; this.submitError = '';
         try {

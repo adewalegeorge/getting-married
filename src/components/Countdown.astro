@@ -1,0 +1,53 @@
+---
+interface Props {
+  target: string;       // ISO datetime, e.g. "2026-10-09T11:30:00+01:00"
+  delay?: string;       // CSS animation-delay (e.g. "0.75s"); pass "0" to disable
+  class?: string;       // extra classes for the outer container
+}
+const { target, delay = "0.75s", class: extraClass = "" } = Astro.props;
+const targetMs = new Date(target).getTime();
+---
+
+<div
+  x-data={`{
+    units: [
+      { label: 'DAYS',  value: '000' },
+      { label: 'HOURS', value: '00'  },
+      { label: 'MINS',  value: '00'  },
+      { label: 'SECS',  value: '00'  },
+    ],
+    target: ${targetMs},
+    init() {
+      this.update();
+      setInterval(() => this.update(), 1000);
+    },
+    update() {
+      const diff = this.target - Date.now();
+      if (diff <= 0) { this.units.forEach(u => u.value = '00'); return; }
+      this.units[0].value = String(Math.floor(diff / 86400000)).padStart(3, '0');
+      this.units[1].value = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      this.units[2].value = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      this.units[3].value = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    }
+  }`}
+  class:list={["flex items-center justify-center gap-2 sm:gap-4 md:gap-8 animate-fade-in", extraClass]}
+  style={`animation-delay:${delay};animation-fill-mode:both`}
+>
+  <template x-for="(item, i) in units" :key="i">
+    <div class="flex items-center gap-2 sm:gap-3 md:gap-6">
+      <div class="text-center">
+        <div
+          class="bg-white/8 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl w-[4.25rem] h-[4.25rem] sm:w-24 sm:h-24 md:w-32 md:h-32 flex items-center justify-center mb-2 sm:mb-3 hover:border-gold-400/30 transition-colors"
+        >
+          <span
+            class="font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-white"
+            x-text="item.value"></span>
+        </div>
+        <span class="label-small text-white/35 text-[10px] sm:text-xs" x-text="item.label"></span>
+      </div>
+      <span
+        class="text-white/20 font-serif text-3xl sm:text-4xl pb-6 sm:pb-8 hidden sm:inline last:hidden"
+        x-show="i < 3">:</span>
+    </div>
+  </template>
+</div>

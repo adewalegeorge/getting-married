@@ -1,5 +1,5 @@
 ---
-
+import Countdown from "./Countdown.astro";
 ---
 
 <section
@@ -88,32 +88,7 @@
     </div>
 
     <!-- Countdown -->
-    <div
-      x-data="heroCountdown('2026-10-09T11:30:00+01:00')"
-      x-init="start()"
-      class="flex items-center justify-center gap-4 md:gap-8 mb-12 animate-fade-in"
-      style="animation-delay:0.75s;animation-fill-mode:both"
-    >
-      <template x-for="(item, i) in units" :key="i">
-        <div class="flex items-center gap-3 md:gap-6">
-          <div class="text-center">
-            <div
-              class="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl w-24 md:w-32 h-24 md:h-32 flex items-center justify-center mb-3 hover:border-gold-400/30 transition-colors"
-            >
-              <span
-                class="font-serif text-4xl md:text-5xl font-semibold text-white"
-                x-text="item.value"></span>
-            </div>
-            <span class="label-small text-white/35 text-xs" x-text="item.label"
-            ></span>
-          </div>
-          <span
-            class="text-white/20 font-serif text-4xl pb-8 last:hidden"
-            x-show="i < 3">:</span
-          >
-        </div>
-      </template>
-    </div>
+    <Countdown target="2026-10-09T14:30:00+01:00" class="mb-12" />
 
     <!-- CTAs -->
     <div
@@ -153,39 +128,3 @@
   </div>
 </section>
 
-<script is:inline>
-  function heroCountdown(targetDate) {
-    return {
-      units: [
-        { label: "DAYS", value: "000" },
-        { label: "HOURS", value: "00" },
-        { label: "MINS", value: "00" },
-        { label: "SECS", value: "00" },
-      ],
-      start() {
-        this.update();
-        setInterval(() => this.update(), 1000);
-      },
-      update() {
-        const diff = new Date(targetDate).getTime() - Date.now();
-        if (diff <= 0) {
-          this.units.forEach((u) => (u.value = "00"));
-          return;
-        }
-        this.units[0].value = String(Math.floor(diff / 86400000)).padStart(
-          3,
-          "0",
-        );
-        this.units[1].value = String(
-          Math.floor((diff % 86400000) / 3600000),
-        ).padStart(2, "0");
-        this.units[2].value = String(
-          Math.floor((diff % 3600000) / 60000),
-        ).padStart(2, "0");
-        this.units[3].value = String(
-          Math.floor((diff % 60000) / 1000),
-        ).padStart(2, "0");
-      },
-    };
-  }
-</script>

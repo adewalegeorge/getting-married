@@ -1,0 +1,324 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import RSVPForm from "../components/RSVPForm.astro";
+import Countdown from "../components/Countdown.astro";
+import LoveStory from "../components/LoveStory.astro";
+---
+
+<Layout
+  title="The White Wedding - Yetunde & Babatunde"
+  description="Yetunde & Babatunde request the pleasure of your company at their wedding ceremony, Friday 9th October 2026."
+  noindex
+>
+
+  <!-- ░░ HERO ░░ -->
+  <section
+    id="hero"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  >
+    <!-- Royal purple base -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(160deg,#1e0b3d_0%,#2a1054_30%,#1e0b3d_70%,#140826_100%)]"
+    ></div>
+    <!-- Subtle accent glow -->
+    <div
+      class="absolute inset-0 opacity-20"
+      style="background-image:
+        radial-gradient(circle at 20% 30%, #c69a2a 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, #bb93d1 0%, transparent 55%);"
+    ></div>
+    <!-- Couple photo backdrop -->
+    <img
+      src="/images/the-georges-hero.jpeg"
+      alt="Yetunde & Babatunde"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-dark-hero"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto py-24">
+      <!-- Crest -->
+      <div class="mb-6 animate-fade-in" style="animation-fill-mode:both">
+        <img
+          src="/images/yb-logo.svg"
+          alt="Yetunde & Babatunde monogram"
+          class="mx-auto h-24 md:h-32 w-auto drop-shadow-[0_0_20px_rgba(198,154,42,0.25)]"
+        />
+      </div>
+
+      <!-- Pre-heading -->
+      <p
+        class="font-display italic text-gold-300 text-xs sm:text-sm tracking-[0.3em] uppercase mb-2 animate-fade-in"
+        style="animation-delay:0.1s;animation-fill-mode:both"
+      >
+        An Invitation to
+      </p>
+      <p
+        class="font-serif text-white/90 text-base md:text-lg tracking-[0.3em] uppercase mb-7 animate-fade-in"
+        style="animation-delay:0.15s;animation-fill-mode:both"
+      >
+        The White Wedding
+      </p>
+
+      <!-- Couple names -->
+      <div
+        class="animate-fade-in"
+        style="animation-delay:0.25s;animation-fill-mode:both"
+      >
+        <h1
+          class="font-script leading-none mb-0 text-white"
+          style="font-size:clamp(4rem,12vw,8rem)"
+        >
+          Yetunde &amp;
+        </h1>
+        <h1
+          class="font-script leading-none text-white"
+          style="font-size:clamp(4rem,12vw,8rem)"
+        >
+          Babatunde
+        </h1>
+      </div>
+
+      <!-- Date / venue -->
+      <div
+        class="mt-8 mb-12 animate-fade-in"
+        style="animation-delay:0.5s;animation-fill-mode:both"
+      >
+        <div class="inline-flex items-center gap-4">
+          <div class="h-px w-12 gradient-bg opacity-50"></div>
+          <p class="font-display text-lg text-white tracking-widest">
+            Friday, 9th October 2026
+          </p>
+          <div class="h-px w-12 gradient-bg opacity-50"></div>
+        </div>
+        <p class="font-sans text-sm text-white tracking-[0.2em] uppercase mt-2">
+          11:30 am · Elite Venue · Gravesend, Kent
+        </p>
+      </div>
+
+      <!-- Countdown -->
+      <Countdown target="2026-10-09T11:30:00+01:00" class="mb-12" />
+
+      <!-- CTAs -->
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
+        style="animation-delay:1s;animation-fill-mode:both"
+      >
+        <a
+          href="#rsvp"
+          class="inline-flex items-center justify-center font-sans font-medium text-sm tracking-wider uppercase text-white px-10 py-3.5 rounded-full transition-all duration-300 hover:scale-105"
+          style="background: #c69a2a;"
+        >
+          RSVP
+        </a>
+        <a
+          href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261009T113000%0ADTEND:20261009T133000%0ASUMMARY:White%20Wedding%20-%20Yetunde%20%26%20Babatunde%0ADESCRIPTION:Wedding%20ceremony%20of%20Yetunde%20%26%20Babatunde%2C%20guests%20arrive%2011%3A30am%0ALOCATION:Elite%20Venue%2C%20Dunkirk%20Cl%2C%20Gravesend%20DA12%205ND%2C%20UK%0AEND:VEVENT%0AEND:VCALENDAR"
+          download="yetunde-babatunde-white-wedding.ics"
+          class="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wider uppercase text-white px-10 py-3.5 rounded-full border-2 border-white/50 transition-all duration-300 hover:bg-white hover:text-dark-900"
+        >
+          <Icon name="calendar" class="w-4 h-4" />
+          Add to Calendar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ INVITATION MESSAGE ░░ -->
+  <section class="py-20 bg-warm-50 relative overflow-hidden">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image:
+        radial-gradient(circle at 80% 20%, rgba(187,147,209,0.16) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(198,154,42,0.12) 0%, transparent 50%);"
+    ></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+      <span class="section-tag">A Personal Invitation</span>
+      <h2 class="font-serif text-3xl md:text-4xl text-dark-900 mb-3">
+        With joy in our hearts
+      </h2>
+      <div class="fancy-divider mt-4 mb-7">
+        <Icon name="diamond" class="w-4 h-4 text-gold-500" />
+      </div>
+      <p class="font-display italic text-xl md:text-2xl text-dark-900/85 leading-relaxed mb-5">
+        "Together with our families, we invite you to share in the most joyful day of our lives."
+      </p>
+      <p class="font-sans text-base text-dark-700/80 leading-relaxed">
+        Your presence at our white wedding ceremony would mean the world to us. Please join us as we exchange our vows and begin our journey together as husband and wife.
+      </p>
+    </div>
+  </section>
+
+  <!-- ░░ OUR LOVE STORY ░░ -->
+  <LoveStory />
+
+  <!-- ░░ CEREMONY DETAILS ░░ -->
+  <section class="py-20 bg-white">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="rounded-4xl overflow-hidden bg-white border border-gold-400/40 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.18)]">
+        <!-- Ceremony banner -->
+        <div class="relative aspect-[16/8] overflow-hidden">
+          <img
+            src="/images/church-ceremony.jpg"
+            alt="Church ceremony interior"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        </div>
+
+        <div class="p-8 md:p-12 text-center">
+          <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center mx-auto -mt-12 mb-5 shadow-gold relative z-10">
+            <Icon name="church" class="w-6 h-6 text-dark-900" />
+          </div>
+          <p class="label-small text-gold-500 mb-2">The Ceremony</p>
+          <h3 class="font-serif text-2xl md:text-3xl text-dark-900 font-semibold mb-4">
+            Order of the Day
+          </h3>
+          <div class="w-12 h-px bg-gold-400/50 mx-auto mb-8"></div>
+
+          <div class="grid sm:grid-cols-2 gap-4 mb-8 text-left">
+            <div class="bg-warm-50 border border-gold-400/25 rounded-2xl p-5 flex gap-4 items-center">
+              <Icon name="calendar" class="w-5 h-5 text-gold-500 flex-shrink-0" />
+              <div>
+                <p class="label-small text-gold-500 text-xs mb-0.5">Date</p>
+                <p class="font-serif text-dark-900 font-medium">Friday, 9th October 2026</p>
+              </div>
+            </div>
+            <div class="bg-warm-50 border border-gold-400/25 rounded-2xl p-5 flex gap-4 items-center">
+              <Icon name="church" class="w-5 h-5 text-gold-500 flex-shrink-0" />
+              <div>
+                <p class="label-small text-gold-500 text-xs mb-0.5">Arrival</p>
+                <p class="font-serif text-dark-900 font-medium">11:30 am</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="label-small text-gold-500 mb-2">The Venue</p>
+          <h4 class="font-serif text-xl md:text-2xl text-dark-900 font-semibold mb-4">
+            Elite Venue
+          </h4>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Elite+Venue+Dunkirk+Cl+Gravesend+DA12+5ND"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-start gap-3 bg-warm-50 border border-gold-400/30 hover:border-gold-500 hover:bg-gold-500/5 rounded-xl px-4 py-3 group transition-all text-left"
+          >
+            <Icon name="mappin" class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+            <span class="flex-1">
+              <span class="block font-sans text-sm text-dark-900">
+                Dunkirk Cl, Gravesend DA12 5ND, United Kingdom
+              </span>
+              <span class="block font-sans text-xs text-gold-600 font-medium tracking-wider uppercase mt-1 flex items-center gap-1 group-hover:gap-2 transition-all">
+                View on Google Maps
+                <Icon name="arrowright" class="w-3 h-3" />
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ TRADITIONAL FOLLOWS ░░ -->
+  <section
+    class="py-20 relative overflow-hidden text-white"
+    style="background: linear-gradient(180deg, #2a1054 0%, #1e0b3d 55%, #14082e 100%);"
+  >
+    <!-- Decorative orbs -->
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image:
+        radial-gradient(circle at 15% 20%, rgba(187,147,209,0.25) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(198,154,42,0.22) 0%, transparent 50%);"
+    ></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="section-tag text-gold-300">And then…</span>
+        <h2 class="font-serif text-3xl md:text-4xl text-white mb-3 drop-shadow-[0_0_18px_rgba(198,154,42,0.25)]">
+          The Celebration Continues
+        </h2>
+        <p class="font-display italic text-gold-400/90 text-lg md:text-xl">
+          A traditional wedding to follow
+        </p>
+        <div class="fancy-divider mt-4 mb-6">
+          <Icon name="diamond" class="w-4 h-4 text-gold-400" />
+        </div>
+        <p class="font-sans text-white/85 text-base leading-relaxed max-w-xl mx-auto">
+          After the church ceremony, please stay (or rejoin us) for our
+          traditional wedding - a Yoruba celebration of family, culture,
+          and joy with prayers, a feast, live music, and dancing into the
+          night.
+        </p>
+      </div>
+
+      <!-- Details panel -->
+      <div class="rounded-4xl bg-white/8 border border-gold-400/30 backdrop-blur-sm p-8 md:p-10">
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
+            <Icon name="ring" class="w-6 h-6 text-dark-900" />
+          </div>
+          <div class="text-left">
+            <p class="label-small text-gold-300 text-xs mb-0.5">Traditional Wedding</p>
+            <p class="font-serif text-white text-xl md:text-2xl font-semibold leading-tight">
+              Guests arrive 2:30 pm
+            </p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3 mb-6">
+          <div class="flex items-center gap-3 bg-white/5 border border-gold-400/20 rounded-2xl px-4 py-3">
+            <Icon name="calendar" class="w-4 h-4 text-gold-300 flex-shrink-0" />
+            <div>
+              <p class="label-small text-gold-300/80 text-[10px] mb-0.5">Date</p>
+              <p class="font-sans text-white text-sm">Friday, 9th October 2026</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white/5 border border-gold-400/20 rounded-2xl px-4 py-3">
+            <Icon name="mappin" class="w-4 h-4 text-gold-300 flex-shrink-0" />
+            <div>
+              <p class="label-small text-gold-300/80 text-[10px] mb-0.5">Same Venue</p>
+              <p class="font-sans text-white text-sm">Elite Venue, Gravesend</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <a
+            href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261009T143000%0ADTEND:20261009T230000%0ASUMMARY:Traditional%20Wedding%20-%20Yetunde%20%26%20Babatunde%0ADESCRIPTION:Traditional%20wedding%20celebration%2C%20guests%20arrive%202%3A30pm%0ALOCATION:Elite%20Venue%2C%20Dunkirk%20Cl%2C%20Gravesend%20DA12%205ND%2C%20UK%0AEND:VEVENT%0AEND:VCALENDAR"
+            download="yetunde-babatunde-traditional-wedding.ics"
+            class="inline-flex items-center justify-center gap-2 font-sans font-medium text-xs tracking-wider uppercase text-white px-7 py-3 rounded-full border-2 border-gold-400/40 hover:border-gold-400 hover:bg-white/10 transition-all duration-300"
+          >
+            <Icon name="calendar" class="w-4 h-4 text-gold-300" />
+            Add Traditional to Calendar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ DRESS CODE (compact) ░░ -->
+  <section class="py-16 bg-warm-50">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <span class="section-tag">What to Wear</span>
+      <h3 class="font-serif text-2xl md:text-3xl text-dark-900 mb-3">
+        Elegant &amp; Sophisticated
+      </h3>
+      <p class="font-display italic text-dark-800/70 text-base md:text-lg">
+        Your finest formalwear
+      </p>
+      <div class="fancy-divider mt-4 mb-6">
+        <Icon name="diamond" class="w-4 h-4 text-gold-500" />
+      </div>
+
+      <p class="font-sans text-base text-dark-700/80 leading-relaxed max-w-md mx-auto">
+        Long gowns, sharp suits, or traditional attire - whatever makes you feel beautiful. No specific colours; simply elegance.
+      </p>
+    </div>
+  </section>
+
+  <!-- ░░ RSVP ░░ -->
+  <RSVPForm />
+
+</Layout>

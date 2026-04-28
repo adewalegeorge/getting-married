@@ -76,8 +76,84 @@ const photos = Array.from({ length: 3 }, (_, i) => ({
       </div>
     </div>
 
-    <div class="text-center mt-10 reveal">
-      <a href="/gallery" class="btn-outline">View Full Gallery</a>
+    <div
+      class="mt-12 reveal"
+      x-data="{
+        active: false,
+        init() {
+          const target = new Date('2026-10-09T15:30:00+01:00').getTime();
+          const check = () => { this.active = Date.now() >= target; };
+          check();
+          if (!this.active) setInterval(check, 60000);
+        }
+      }"
+      x-init="init()"
+    >
+      <div class="relative max-w-2xl mx-auto rounded-3xl overflow-hidden bg-white border border-gold-400/30 shadow-[0_10px_30px_-15px_rgba(30,11,61,0.2)]">
+        <div
+          class="absolute inset-0 pointer-events-none"
+          style="background-image:
+            radial-gradient(circle at 0% 50%, rgba(187,147,209,0.15) 0%, transparent 55%),
+            radial-gradient(circle at 100% 50%, rgba(198,154,42,0.12) 0%, transparent 55%);"
+        ></div>
+
+        <!-- Active (from 3:30pm on 9 Oct 2026) -->
+        <div
+          x-show="active"
+          x-cloak
+          class="relative px-6 py-5 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left"
+        >
+          <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center shadow-gold flex-shrink-0">
+            <Icon name="camera" class="w-4 h-4 text-dark-900" />
+          </div>
+          <div class="flex-1">
+            <p class="font-serif text-dark-900 text-base font-semibold leading-tight">
+              Be our photographers
+            </p>
+            <p class="font-sans text-sm text-dark-700/75 leading-snug">
+              Browse the favourites, or drop your own into our album.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center gap-2 flex-shrink-0">
+            <a href="/gallery" class="font-sans text-xs font-medium tracking-widest uppercase text-dark-700 hover:text-gold-600 transition-colors px-3 py-2">
+              View Gallery
+            </a>
+            <a
+              href="https://photos.app.goo.gl/8PeNWqxGnHWHnV5j9"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 font-sans text-xs font-medium tracking-widest uppercase text-white px-5 py-2.5 rounded-full transition-all hover:scale-105"
+              style="background: #c69a2a;"
+            >
+              Add Yours
+            </a>
+          </div>
+        </div>
+
+        <!-- Locked (before 3:30pm on 9 Oct 2026) -->
+        <div
+          x-show="!active"
+          x-cloak
+          class="relative px-6 py-5 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left"
+        >
+          <div class="w-10 h-10 rounded-xl bg-warm-100 border border-gold-400/30 flex items-center justify-center flex-shrink-0">
+            <Icon name="lock" class="w-4 h-4 text-gold-500" />
+          </div>
+          <div class="flex-1">
+            <p class="font-serif text-dark-900 text-base font-semibold leading-tight">
+              Our album opens on the wedding day
+            </p>
+            <p class="font-sans text-sm text-dark-700/75 leading-snug">
+              Photo sharing goes live at 3:30 pm on Friday 9 October.
+            </p>
+          </div>
+          <div class="flex items-center flex-shrink-0">
+            <a href="/gallery" class="font-sans text-xs font-medium tracking-widest uppercase text-dark-700 hover:text-gold-600 transition-colors px-3 py-2">
+              View Gallery
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
