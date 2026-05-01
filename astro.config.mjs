@@ -5,4 +5,8 @@ export default defineConfig({
   site: 'https://yb-wedding.pages.dev',
   integrations: [tailwind()],
   output: 'static',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
 });

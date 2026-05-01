@@ -44,6 +44,20 @@ import Icon from './Icon.astro';
         <p class="font-sans text-base text-dark-700/85 leading-relaxed max-w-md mx-auto">
           Your RSVP has been received. We can't wait to celebrate with you!
         </p>
+
+        <!-- Gentle gift nudge -->
+        <div class="mt-10 pt-8 border-t border-warm-300 max-w-md mx-auto">
+          <p class="font-display italic text-dark-800/70 text-base leading-relaxed mb-5">
+            For those who have kindly asked about gifts, you'll find our details here.
+          </p>
+          <a
+            href="/gifts"
+            class="inline-flex items-center justify-center gap-2 font-sans text-sm font-medium tracking-wider uppercase px-6 py-3 rounded-full border border-gold-400/50 text-gold-600 hover:bg-gold-500/10 hover:border-gold-500 transition-all"
+          >
+            <Icon name="gift" class="w-3.5 h-3.5" />
+            View Gift Details
+          </a>
+        </div>
       </div>
 
       <!-- Previously submitted (cookie detected) -->
@@ -66,6 +80,20 @@ import Icon from './Icon.astro';
           RSVP for someone else
           <Icon name="arrowright" class="w-3.5 h-3.5" />
         </button>
+
+        <!-- Gentle gift nudge -->
+        <div class="mt-10 pt-8 border-t border-warm-300 max-w-md mx-auto">
+          <p class="font-display italic text-dark-800/70 text-base leading-relaxed mb-5">
+            For those who have kindly asked about gifts, you'll find our details here.
+          </p>
+          <a
+            href="/gifts"
+            class="inline-flex items-center justify-center gap-2 font-sans text-sm font-medium tracking-wider uppercase px-6 py-3 rounded-full border border-gold-400/50 text-gold-600 hover:bg-gold-500/10 hover:border-gold-500 transition-all"
+          >
+            <Icon name="gift" class="w-3.5 h-3.5" />
+            View Gift Details
+          </a>
+        </div>
       </div>
 
       <!-- Form -->
@@ -181,11 +209,10 @@ import Icon from './Icon.astro';
       <p class="font-sans text-base text-dark-700/75 text-center leading-relaxed mb-6">
         For further assistance or any questions regarding your RSVP, please don't hesitate to reach out to any of our contacts below.
       </p>
-      <div class="grid sm:grid-cols-3 gap-4">
+      <div class="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
         {[
-          { name: 'Adewale George',   phone: '07848 883057' },
-          { name: 'Adeola George',    phone: '07456 352678' },
-          { name: 'Emmanuel George',  phone: '07843 552645' },
+          { name: 'Yetunde', phone: '07506 677892' },
+          { name: 'Adewale', phone: '07848 883057' },
         ].map(c => (
           <a href={`tel:${c.phone.replace(/\s/g,'')}`}
             class="card bg-white p-5 text-center group hover:scale-[1.02] transition-all duration-300 border border-gold-400/20 hover:border-gold-400/50 rounded-4xl">

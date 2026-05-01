@@ -5,10 +5,23 @@ const chapters = [
   {
     numeral: "I",
     label: "Chapter One",
-    title: "First Meeting",
-    text: "Every great love story has a moment where two paths cross for the very first time, and ours was no different. A chance encounter that neither of us could have predicted became the start of everything.",
+    title: "How We Met",
+    perspectives: [
+      {
+        label: "His Version",
+        body: "In 2020, my cousin's bridesmaid (Yetunde) challenged me to a candy dance. I won, thought she was beautiful, but wasn't looking at the time. Four years later we met again at another wedding, and this time I wasn't letting her get away.",
+      },
+      {
+        label: "Her Version",
+        body: "In 2020, I noticed Babatunde on the dance floor and thought, what a handsome guy. I challenged him to a dance battle (my way of flirting) but he didn't notice. Years later we met again, he friend-zoned me, and somehow we still ended up here, by God's grace.",
+      },
+      {
+        label: "The Truth",
+        body: "Yetunde and Babatunde have been in each other's lives since school age. Babatunde friend-zoned Yetunde at the wedding because he was running his background checks to make sure they weren't related. Once confirmed they had no connection, Babatunde pursued Yetunde, and now we're celebrating their future.",
+      },
+    ],
     icon: "sparkle",
-    motif: "A first glance",
+    motif: "A dance, a spark",
     photo: "/images/gallery-5.jpg",
   },
   {
@@ -219,9 +232,44 @@ const chapters = [
                           isReversed ? "mx-auto md:ml-auto md:mr-0" : "mx-auto md:mx-0",
                         ]}
                       />
-                      <p class="font-sans text-base md:text-lg text-dark-800/80 leading-relaxed">
-                        {c.text}
-                      </p>
+                      {c.perspectives ? (
+                        <div class="space-y-6">
+                          {c.perspectives.map((p) => {
+                            const isTruth = p.label === "The Truth";
+                            const accentColor = isTruth
+                              ? "text-lilac-500"
+                              : "text-gold-500";
+                            return (
+                              <div>
+                                <div
+                                  class:list={[
+                                    "flex items-center gap-2 mb-2",
+                                    isReversed ? "justify-center md:justify-end" : "justify-center md:justify-start",
+                                  ]}
+                                >
+                                  <span class={`w-5 h-px ${isTruth ? "bg-lilac-400/60" : "bg-gold-400/60"}`} />
+                                  <p class={`font-display italic ${accentColor} text-xs tracking-[0.3em] uppercase`}>
+                                    {p.label}
+                                  </p>
+                                  <span class={`w-5 h-px ${isTruth ? "bg-lilac-400/60" : "bg-gold-400/60"}`} />
+                                </div>
+                                <p
+                                  class:list={[
+                                    "font-sans text-base md:text-[1.05rem] text-dark-800/80 leading-relaxed",
+                                    isTruth ? "italic" : "",
+                                  ]}
+                                >
+                                  {p.body}
+                                </p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <p class="font-sans text-base md:text-lg text-dark-800/80 leading-relaxed">
+                          {c.text}
+                        </p>
+                      )}
                     </div>
                   </div>
                 )}
@@ -235,25 +283,25 @@ const chapters = [
     <!-- Closing love letter -->
     <div class="mt-24 reveal">
       <div class="relative bg-white rounded-4xl p-10 md:p-14 text-center border border-gold-400/30 shadow-[0_25px_60px_-25px_rgba(30,11,61,0.25)] overflow-hidden">
-        <!-- Top accent bar -->
-        <div class="absolute top-0 left-0 right-0 h-1 gradient-bg"></div>
+        <!-- Top accent bar (lilac → gold) -->
+        <div class="absolute top-0 left-0 right-0 h-1 gradient-bg-theme"></div>
         <!-- Corner flourishes -->
         <span class="absolute top-5 left-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
         <span class="absolute top-5 right-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
         <span class="absolute bottom-5 left-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
         <span class="absolute bottom-5 right-5 text-gold-500/40 text-xl font-display select-none pointer-events-none">❦</span>
-        <!-- Soft tints -->
+        <!-- Soft tints — lilac & gold theme glow -->
         <div
           class="absolute inset-0 pointer-events-none"
           style="background-image:
-            radial-gradient(circle at 20% 30%, rgba(187,147,209,0.10) 0%, transparent 55%),
-            radial-gradient(circle at 80% 70%, rgba(198,154,42,0.10) 0%, transparent 55%);"
+            radial-gradient(circle at 20% 30%, rgba(187,147,209,0.16) 0%, transparent 55%),
+            radial-gradient(circle at 80% 70%, rgba(198,154,42,0.12) 0%, transparent 55%);"
         ></div>
 
         <div class="relative z-10">
           <Icon name="heart" class="w-7 h-7 text-gold-500 mx-auto mb-5" />
           <p class="font-display italic text-dark-900 text-2xl md:text-3xl leading-relaxed mb-6 max-w-xl mx-auto">
-            "Two families. One love. A future written together."
+            "It started with a dance, paused for a friend zone, and ended in 'I do'."
           </p>
           <div class="flex items-center justify-center gap-4 mb-3">
             <div class="h-px w-10 bg-gold-400/50"></div>

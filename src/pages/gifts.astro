@@ -45,42 +45,11 @@ import Icon from "../components/Icon.astro";
         </p>
       </div>
 
-      <!-- Gift cards -->
-      <div class="grid md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
-        <!-- Honeymoon -->
+      <!-- Gift card -->
+      <div class="max-w-md mx-auto">
+        <!-- Bank transfer -->
         <div
-          class="card bg-white p-8 md:p-9 text-center flex flex-col reveal border border-gold-400/30 hover:border-gold-400/60 transition-colors rounded-4xl relative overflow-hidden"
-        >
-          <div class="absolute top-0 left-0 right-0 h-1 gradient-bg opacity-60">
-          </div>
-          <div
-            class="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-5 shadow-gold"
-          >
-            <Icon name="globe" class="w-7 h-7 text-dark-900" />
-          </div>
-          <p
-            class="font-display italic text-gold-600 text-base tracking-wider mb-1"
-          >
-            Honeymoon Fund
-          </p>
-          <h3
-            class="font-serif text-xl md:text-2xl text-dark-900 mb-3"
-          >
-            Adventures Together
-          </h3>
-          <div class="w-12 h-px bg-gold-400/60 mx-auto mb-5"></div>
-          <p
-            class="font-sans text-base text-dark-800/80 leading-relaxed flex-1 mb-6"
-          >
-            Help us create unforgettable memories on our honeymoon. Any
-            contribution towards our travel fund would mean the world.
-          </p>
-          <a href="/#rsvp" class="btn-outline">Contribute</a>
-        </div>
-
-        <!-- Bank transfer — preferred -->
-        <div
-          class="card bg-white p-8 md:p-9 text-center flex flex-col relative overflow-hidden rounded-4xl reveal border-2 border-gold-500 hover:border-gold-600 transition-colors shadow-[0_20px_60px_-15px_rgba(198,154,42,0.4)] md:-translate-y-2"
+          class="card bg-white p-8 md:p-9 text-center flex flex-col relative overflow-hidden rounded-4xl reveal border-2 border-gold-500 hover:border-gold-600 transition-colors shadow-[0_20px_60px_-15px_rgba(198,154,42,0.4)]"
         >
           <div class="absolute top-0 left-0 right-0 h-1.5 gradient-bg"></div>
           <div
@@ -93,9 +62,7 @@ import Icon from "../components/Icon.astro";
           >
             Monetary Gift
           </p>
-          <h3
-            class="font-serif text-xl md:text-2xl text-dark-900 mb-3"
-          >
+          <h3 class="font-serif text-xl md:text-2xl text-dark-900 mb-3">
             Bank Transfer
           </h3>
           <div class="w-12 h-px bg-gold-400/60 mx-auto mb-5"></div>
@@ -108,9 +75,9 @@ import Icon from "../components/Icon.astro";
           >
             {
               [
-                { l: "Account Name", v: "Coming Soon" },
-                { l: "Sort Code", v: "XX - XX - XX" },
-                { l: "Account No.", v: "XXXXXXXX" },
+                { l: "Account Name", v: "Miss MY Osagie" },
+                { l: "Sort Code", v: "11 - 08 - 68" },
+                { l: "Account No.", v: "01007784" },
               ].map((r) => (
                 <div class="flex justify-between items-center text-sm font-sans">
                   <span class="text-dark-700 uppercase tracking-wider text-xs">
@@ -123,11 +90,7 @@ import Icon from "../components/Icon.astro";
               ))
             }
           </div>
-          <p class="font-sans text-dark-700 text-xs italic mt-auto">
-            Bank details confirmed closer to the date.
-          </p>
         </div>
-
       </div>
     </div>
   </section>

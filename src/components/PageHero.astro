@@ -25,11 +25,11 @@ const { title, subtitle, breadcrumb, image } = Astro.props;
     class="absolute inset-0 pointer-events-none"
     style={image
       ? "background: rgba(15,10,5,0.2)"
-      : "background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(198,154,42,0.12) 0%, transparent 70%)"}
+      : "background-image: radial-gradient(ellipse 60% 45% at 30% 100%, rgba(198,154,42,0.14) 0%, transparent 70%), radial-gradient(ellipse 60% 45% at 70% 100%, rgba(187,147,209,0.18) 0%, transparent 70%)"}
   >
   </div>
-  <!-- Top gradient bar -->
-  <div class="absolute top-0 left-0 right-0 h-1 gradient-bg"></div>
+  <!-- Top gradient bar (lilac → gold) -->
+  <div class="absolute top-0 left-0 right-0 h-1 gradient-bg-theme"></div>
 
   <div class="relative z-10 max-w-3xl mx-auto px-6">
     <!-- Breadcrumb -->
@@ -55,8 +55,8 @@ const { title, subtitle, breadcrumb, image } = Astro.props;
     }
   </div>
 
-  <!-- Bottom gradient bar -->
-  <div class="absolute bottom-0 left-0 right-0 h-1 gradient-bg opacity-30">
+  <!-- Bottom gradient bar (lilac → gold) -->
+  <div class="absolute bottom-0 left-0 right-0 h-1 gradient-bg-theme opacity-40">
   </div>
 </div>
 
