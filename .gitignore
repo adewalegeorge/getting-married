@@ -28,6 +28,9 @@ Thumbs.db
 /tmp/
 coverage/
 
+# Supabase CLI scratch (machine-specific)
+supabase/.temp/
+
 # Claude Code
 .claude/
 CLAUDE.md
