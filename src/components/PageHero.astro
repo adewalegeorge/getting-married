@@ -9,13 +9,16 @@ const { title, subtitle, breadcrumb, image } = Astro.props;
 ---
 
 <div class="bg-dark-900 pt-32 pb-20 relative overflow-hidden text-center">
-  <!-- Background image -->
+  <!-- Background image — anchored slightly low so the couple (who sit in the
+       lower-centre of these source photos) lands inside the visible hero crop
+       rather than below it. -->
   {
     image && (
       <img
         src={image}
         alt=""
-        class="absolute inset-0 w-full h-full object-cover object-center"
+        class="absolute inset-0 w-full h-full object-cover"
+        style="object-position: center 65%;"
         aria-hidden="true"
       />
     )
