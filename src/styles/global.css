@@ -41,6 +41,19 @@
   background: linear-gradient(135deg, #c69a2a, #b8882a);
 }
 
+/* Lilac × Gold — the wedding theme combined.
+   Use sparingly on accent rules and special touchpoints. */
+.gradient-text-theme {
+  background: linear-gradient(135deg, #bb93d1 0%, #c69a2a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg-theme {
+  background: linear-gradient(135deg, #bb93d1 0%, #c69a2a 100%);
+}
+
 /* ─── Typography ─────────────────────────────── */
 .heading-script { @apply font-script leading-none; }
 .heading-serif  { @apply font-serif font-semibold leading-tight; }

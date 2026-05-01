@@ -13,6 +13,16 @@ export default {
           600: '#a8821f',
           700: '#8a6a18',
         },
+        lilac: {
+          50:  '#faf5fc',
+          100: '#f3e9f7',
+          200: '#e6d4ee',
+          300: '#d3b3e0',
+          400: '#bb93d1',   /* primary lilac — wedding theme accent */
+          500: '#9a6fb0',
+          600: '#7c5290',
+          700: '#5e3a72',
+        },
         dark: {
           900: '#1e0b3d',   /* deep royal purple */
           800: '#2a1054',   /* mid royal purple */
@@ -33,9 +43,11 @@ export default {
         sans:    ['"Lora"',               'Georgia', 'serif'],
       },
       backgroundImage: {
-        'gold-gradient':      'linear-gradient(135deg, #d4a574, #d4a59a)',
-        'gold-gradient-soft': 'linear-gradient(135deg, #e8b888, #d4a59a)',
-        'dark-hero':          'linear-gradient(to bottom, rgba(30,11,61,0.65) 0%, rgba(30,11,61,0.35) 50%, rgba(30,11,61,0.8) 100%)',
+        'gold-gradient':       'linear-gradient(135deg, #d4a574, #d4a59a)',
+        'gold-gradient-soft':  'linear-gradient(135deg, #e8b888, #d4a59a)',
+        'lilac-gold-gradient': 'linear-gradient(135deg, #bb93d1, #c69a2a)',
+        'lilac-gold-soft':     'linear-gradient(135deg, #d3b3e0, #e8cc6a)',
+        'dark-hero':           'linear-gradient(to bottom, rgba(30,11,61,0.65) 0%, rgba(30,11,61,0.35) 50%, rgba(30,11,61,0.8) 100%)',
       },
       borderRadius: {
         '2xl': '1rem',
@@ -43,10 +55,12 @@ export default {
         '4xl': '1.75rem',
       },
       boxShadow: {
-        'card':   '0 20px 60px -10px rgba(0,0,0,0.12)',
-        'card-lg':'0 35px 80px -15px rgba(0,0,0,0.18)',
-        'gold':   '0 8px 30px rgba(198,154,42,0.35)',
-        'gold-lg':'0 12px 40px rgba(198,154,42,0.45)',
+        'card':    '0 20px 60px -10px rgba(0,0,0,0.12)',
+        'card-lg': '0 35px 80px -15px rgba(0,0,0,0.18)',
+        'gold':    '0 8px 30px rgba(198,154,42,0.35)',
+        'gold-lg': '0 12px 40px rgba(198,154,42,0.45)',
+        'lilac':   '0 8px 30px rgba(187,147,209,0.35)',
+        'lilac-lg':'0 12px 40px rgba(187,147,209,0.45)',
       },
       keyframes: {
         fadeUp: {
