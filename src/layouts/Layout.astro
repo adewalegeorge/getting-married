@@ -267,6 +267,35 @@ const navLinks = [
 )}
 
 <!-- Scripts -->
+
+<!-- Gallery lightbox factory — must be defined SYNCHRONOUSLY (is:inline)
+     and BEFORE the Alpine CDN script, otherwise Alpine's deferred init runs
+     first and x-data="galleryLightbox()" errors out on initial page load.
+     Re-runs on every SPA navigation, which is fine: it just rebinds the
+     function on window. -->
+<script is:inline>
+  window.galleryLightbox = function () {
+    var cells = Array.prototype.slice.call(document.querySelectorAll('.gallery-cell'));
+    var images = cells.map(function (el, i) {
+      return { src: el.dataset.src, alt: 'Photo ' + (i + 1) };
+    });
+    var lockScroll = function (lock) {
+      document.documentElement.style.overflow = lock ? 'hidden' : '';
+      document.body.style.overflow = lock ? 'hidden' : '';
+    };
+    return {
+      active: null,
+      images: images,
+      open: function (i) { this.active = i; lockScroll(true); },
+      close: function () { this.active = null; lockScroll(false); },
+      prev: function () { this.active = (this.active - 1 + this.images.length) % this.images.length; },
+      next: function () { this.active = (this.active + 1) % this.images.length; },
+    };
+  };
+  // Alias kept for the standalone /gallery page which used `fullGallery`.
+  window.fullGallery = window.galleryLightbox;
+</script>
+
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script define:vars={{ supabaseUrl, supabaseKey }}>
   window.__SB_URL__ = supabaseUrl;
